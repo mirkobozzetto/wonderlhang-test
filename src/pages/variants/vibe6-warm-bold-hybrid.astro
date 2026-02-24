@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WONDERL'HANG | Musique & Voyages Sonores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@4" is:inline></script>
+    <style is:inline>
+        :root {
+            --color-bg: #f8f1e8;
+            --color-text: #2a1810;
+            --color-terracotta: #b85c38;
+            --color-copper: #d4883e;
+        }
+        body { background-color: var(--color-bg); color: var(--color-text); font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+        .font-display { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em; }
+        .organic-shape-1 { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        .organic-shape-2 { border-radius: 65% 35% 38% 62% / 49% 45% 55% 51%; }
+        ::selection { background-color: var(--color-terracotta); color: white; }
+        .section-padding { padding-top: clamp(4rem, 10vw, 10rem); padding-bottom: clamp(4rem, 10vw, 10rem); }
+        .text-italic { font-style: italic; font-weight: 300; color: var(--color-copper); }
+        .grain {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 9999; opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .price-card { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .price-card:hover { transform: scale(1.03) rotate(-1deg); }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="grain"></div>
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#f8f1e8]/90 border-b border-[#d4883e]/20 px-4 sm:px-6 py-4 transition-transform duration-300">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-display text-xl sm:text-2xl font-bold tracking-tighter text-[#2a1810]">WONDERL'HANG<span class="text-[#b85c38]">.</span></a>
+            <div class="hidden md:flex items-center space-x-6 lg:space-x-8 font-semibold uppercase text-xs sm:text-sm tracking-widest">
+                <a href="#about" class="hover:text-[#b85c38] transition-colors">L'Artiste</a>
+                <a href="#concerts" class="hover:text-[#b85c38] transition-colors">Concerts</a>
+                <a href="#ateliers" class="hover:text-[#b85c38] transition-colors">Ateliers</a>
+                <a href="#contact" class="bg-[#b85c38] text-[#f8f1e8] px-5 sm:px-6 py-2 rounded-full hover:bg-[#2a1810] transition-all focus:outline-none focus:ring-2 focus:ring-[#b85c38] focus:ring-offset-2">Réserver</a>
+            </div>
+            <button id="open-menu" class="md:hidden text-[#2a1810]">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" /></svg>
+            </button>
+        </div>
+    </nav>
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-[#f8f1e8] flex flex-col items-center justify-center gap-8 translate-x-full transition-transform duration-300 md:hidden">
+        <button id="close-menu" class="absolute top-6 right-6 text-[#2a1810]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <a href="#about" class="text-2xl font-semibold uppercase tracking-widest text-[#2a1810] hover:text-[#b85c38] transition-colors mobile-link">L'Artiste</a>
+        <a href="#concerts" class="text-2xl font-semibold uppercase tracking-widest text-[#2a1810] hover:text-[#b85c38] transition-colors mobile-link">Concerts</a>
+        <a href="#ateliers" class="text-2xl font-semibold uppercase tracking-widest text-[#2a1810] hover:text-[#b85c38] transition-colors mobile-link">Ateliers</a>
+        <a href="#contact" class="text-2xl font-semibold uppercase tracking-widest text-[#2a1810] hover:text-[#b85c38] transition-colors mobile-link">Contact</a>
+        <a href="#contact" class="bg-[#b85c38] text-[#f8f1e8] px-8 py-3 rounded-full font-bold uppercase tracking-widest text-lg hover:bg-[#2a1810] transition-all mobile-link">Réserver</a>
+    </div>
+    <section class="min-h-screen flex items-center pt-24 pb-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div class="reveal">
+                <h1 class="font-display text-4xl sm:text-5xl md:text-7xl leading-[1.1] uppercase mb-8 text-pretty">
+                    Un instrument, une vibration — une expérience qui ne vous quittera plus
+                </h1>
+                <p class="text-lg sm:text-xl md:text-2xl mb-10 max-w-lg leading-relaxed font-light">
+                    Concerts intimistes, ateliers & voyages sonores à Bruxelles. Découvrez la résonance du Handpan.
+                </p>
+                <a href="#contact" class="inline-block border-2 border-[#b85c38] text-[#b85c38] px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold uppercase tracking-widest hover:bg-[#b85c38] hover:text-[#f8f1e8] transition-all text-xs sm:text-sm price-card">
+                    Réservez votre expérience
+                </a>
+            </div>
+            <div class="relative reveal" style="transition-delay: 200ms;">
+                <img src="https://www.wonderlhang.be/wp-content/uploads/2022/04/cropped-DSC_2731-Modifier-scaled-1.jpg" alt="Handpan Wonderlhang" class="w-full h-[350px] sm:h-[500px] md:h-[700px] object-cover organic-shape-1 shadow-2xl relative z-10">
+                <div class="hidden md:flex absolute bottom-10 right-10 bg-[#b85c38] text-white p-6 rounded-full w-32 h-32 items-center justify-center text-center text-xs font-bold uppercase leading-tight rotate-12 z-20">Artisan Sonore</div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="section-padding px-6 bg-[#2a1810] text-[#f8f1e8]">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+            <div class="md:col-span-5 reveal">
+                <img src="http://www.wonderlhang.be/wp-content/uploads/2021/01/135821705_10159232235994268_672114074632653608_o-1024x1019.jpg" alt="Jess - Wonderlhang" class="w-full aspect-square object-cover rounded-full border-6 sm:border-8 border-[#b85c38]/30 shadow-2xl">
+            </div>
+            <div class="md:col-span-7 reveal" style="transition-delay: 300ms;">
+                <h2 class="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl uppercase mb-6 md:mb-10 leading-none text-pretty">
+                    Derrière Wonderl'hang, il y a <span class="text-[#d4883e]">Jess</span>
+                </h2>
+                <div class="space-y-4 sm:space-y-6 text-base sm:text-lg md:text-xl font-light leading-relaxed">
+                    <p>Psychologue de formation, musicienne par accident. En 2015, Jess Lefebvre croise le chemin de Gérard Spencer et de son handpan. Coup de foudre double — pour l'homme et pour l'instrument. Elle ne lâchera ni l'un ni l'autre.</p>
+                    <p>Autodidacte, elle apprend en jouant, en écoutant, en osant. Des scènes d'Espéranzah au Concert Noble de Bruxelles, du Palais 12 au Winter Pop — le handpan l'a emmenée là où elle n'aurait jamais imaginé aller.</p>
+                    <p class="text-[#d4883e] font-semibold italic text-lg sm:text-xl md:text-2xl">"La vibration n'est pas seulement entendue, elle est ressentie."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="concerts" class="section-padding px-6">
+        <div class="max-w-7xl mx-auto text-center mb-12 sm:mb-16 md:mb-20 reveal">
+            <h2 class="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl uppercase mb-6 sm:mb-8 leading-none text-pretty">
+                Un concert qui <span class="text-italic font-light lowercase">marque</span> les esprits
+            </h2>
+            <p class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl font-light">
+                Imaginez un instrument en métal, posé sur les genoux, qui produit des sons qu'on jurerait venus d'ailleurs. Cristallins, suspendus dans l'air, comme si chaque note refusait de disparaître.
+            </p>
+        </div>
+        <div class="max-w-6xl mx-auto reveal">
+            <div class="relative group">
+                <img src="https://www.wonderlhang.be/wp-content/uploads/2017/06/18527345_10155343907539268_4680125327708322652_o.jpg" alt="Concert Handpan" class="w-full h-[300px] sm:h-[450px] md:h-[600px] object-cover rounded-3xl shadow-xl">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#2a1810] via-transparent to-transparent opacity-60 rounded-3xl"></div>
+                <div class="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 md:bottom-12 md:left-12 md:right-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                    <p class="text-[#f8f1e8] text-lg sm:text-2xl md:text-4xl font-display uppercase font-bold max-w-2xl">Des harmonies qui suspendent le temps.</p>
+                    <a href="#contact" class="hidden md:inline-block bg-[#b85c38] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold hover:bg-white hover:text-[#2a1810] transition-all focus:outline-none focus:ring-2 focus:ring-[#b85c38] focus:ring-offset-2">Demandez un devis</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="ateliers" class="section-padding px-6 bg-[#f0e6da]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-4 md:gap-6 reveal">
+                <div>
+                    <span class="text-[#b85c38] font-bold uppercase tracking-widest text-xs sm:text-sm mb-2 sm:mb-4 block">Formations & Sessions</span>
+                    <h2 class="font-display text-3xl sm:text-5xl uppercase leading-none text-pretty">Nos Ateliers</h2>
+                </div>
+                <p class="max-w-md text-base sm:text-lg italic">Aucune connaissance musicale requise. Juste de la curiosité.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="price-card bg-[#f8f1e8] p-6 sm:p-8 rounded-2xl border-t-4 border-[#b85c38] shadow-lg flex flex-col justify-between reveal">
+                    <div>
+                        <h3 class="font-display text-xl sm:text-2xl uppercase mb-2">Solo 1h</h3>
+                        <p class="text-xs sm:text-sm mb-8 italic text-[#2a1810]">Un moment privilégié à Uccle.</p>
+                        <span class="text-4xl sm:text-5xl font-display text-[#b85c38]">40€</span>
+                    </div>
+                </div>
+                <div class="price-card bg-[#b85c38] p-6 sm:p-8 rounded-2xl shadow-lg text-[#f8f1e8] flex flex-col justify-between reveal" style="transition-delay: 100ms;">
+                    <div>
+                        <h3 class="font-display text-xl sm:text-2xl uppercase mb-2">Duo 1h</h3>
+                        <p class="text-xs sm:text-sm mb-8 italic">Partagez la découverte à deux.</p>
+                        <span class="text-4xl sm:text-5xl font-display">50€</span>
+                    </div>
+                </div>
+                <div class="price-card bg-[#f8f1e8] p-6 sm:p-8 rounded-2xl border-t-4 border-[#d4883e] shadow-lg flex flex-col justify-between reveal" style="transition-delay: 200ms;">
+                    <div>
+                        <h3 class="font-display text-xl sm:text-2xl uppercase mb-2">Groupe</h3>
+                        <p class="text-xs sm:text-sm mb-8 italic text-[#2a1810]">Max 8 places. Bruxelles ou Wallonie.</p>
+                        <span class="text-4xl sm:text-5xl font-display text-[#d4883e]">50€</span>
+                        <span class="text-xs sm:text-sm uppercase font-bold">/ pers.</span>
+                    </div>
+                </div>
+                <div class="price-card bg-[#2a1810] p-6 sm:p-8 rounded-2xl shadow-lg text-[#f8f1e8] flex flex-col justify-between reveal" style="transition-delay: 300ms;">
+                    <div>
+                        <h3 class="font-display text-xl sm:text-2xl uppercase mb-2">À Domicile</h3>
+                        <p class="text-xs sm:text-sm mb-8 italic">Je me déplace avec mes instruments. Max 10 pers.</p>
+                        <span class="text-4xl sm:text-5xl font-display text-[#d4883e]">300€</span>
+                    </div>
+                </div>
+                <div class="price-card bg-[#f8f1e8] p-6 sm:p-8 rounded-2xl border-b-4 border-[#b85c38] shadow-lg flex flex-col justify-between reveal" style="transition-delay: 400ms;">
+                    <div>
+                        <h3 class="font-display text-xl sm:text-2xl uppercase mb-2">Teambuilding</h3>
+                        <p class="text-xs sm:text-sm mb-8 italic text-[#2a1810]">Cohésion d'équipe par le son.</p>
+                        <span class="text-4xl sm:text-5xl font-display text-[#b85c38]">500€</span>
+                    </div>
+                </div>
+                <div class="price-card bg-[#d4883e] p-6 sm:p-8 rounded-2xl shadow-lg text-[#2a1810] flex flex-col justify-between reveal" style="transition-delay: 500ms;">
+                    <div>
+                        <h3 class="font-display text-xl sm:text-2xl uppercase mb-2">Location</h3>
+                        <p class="text-xs sm:text-sm mb-8 italic">Emportez le handpan chez vous.</p>
+                        <span class="text-4xl sm:text-5xl font-display">40€</span>
+                        <span class="text-xs sm:text-sm uppercase font-bold">/ semaine</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-padding px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <div class="order-2 lg:order-1 reveal">
+                <img src="https://www.wonderlhang.be/wp-content/uploads/2022/04/DSC8002-1024x576.jpg" alt="Voyage Sonore Wonderlhang" class="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover organic-shape-2 shadow-2xl">
+            </div>
+            <div class="order-1 lg:order-2 reveal" style="transition-delay: 200ms;">
+                <h2 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl uppercase leading-none mb-6 md:mb-10 text-pretty">
+                    Fermez les yeux, le reste <span class="text-italic lowercase">suit</span>
+                </h2>
+                <div class="space-y-4 sm:space-y-6 text-base sm:text-lg md:text-xl font-light leading-relaxed">
+                    <p>Handpans, ravdrum, bols, voix, guitare, koshi, mantras. Ce n'est pas de la méditation. Ce n'est pas un spectacle. C'est quelque part entre les deux.</p>
+                    <p>Un retour à soi, une déconnexion nécessaire dans un monde bruyant.</p>
+                </div>
+                <p class="text-xl sm:text-2xl md:text-3xl font-display text-[#b85c38] mt-6 md:mt-8">200€ <span class="text-sm md:text-base font-light text-[#2a1810]">+ transport</span></p>
+                <a href="#contact" class="inline-block mt-6 md:mt-8 bg-[#b85c38] text-[#f8f1e8] px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold uppercase tracking-widest hover:bg-[#2a1810] transition-all text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#b85c38] focus:ring-offset-2">Réserver un voyage</a>
+            </div>
+        </div>
+    </section>
+    <section class="section-padding px-6 bg-[#2a1810] text-[#f8f1e8] overflow-hidden">
+        <div class="max-w-7xl mx-auto relative">
+            <h2 class="font-display text-2xl sm:text-3xl md:text-4xl text-center mb-12 md:mb-16 uppercase text-pretty">Ce qu'ils en disent</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative z-10">
+                <div class="reveal">
+                    <p class="text-3xl sm:text-4xl text-[#d4883e] mb-4 font-display">"</p>
+                    <p class="text-base sm:text-lg md:text-xl italic mb-4 sm:mb-6 leading-relaxed font-light">"On avait réservé Jess pour notre mariage. Trois mois après, nos invités nous en parlent encore."</p>
+                    <p class="uppercase font-bold tracking-widest text-xs sm:text-sm">— Émilie & Thomas, Waterloo</p>
+                </div>
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <p class="text-3xl sm:text-4xl text-[#d4883e] mb-4 font-display">"</p>
+                    <p class="text-base sm:text-lg md:text-xl italic mb-4 sm:mb-6 leading-relaxed font-light">"J'ai offert l'atelier à mon fils de 14 ans qui ne voulait pas y aller. Il est ressorti en demandant quand est-ce qu'on y retourne."</p>
+                    <p class="uppercase font-bold tracking-widest text-xs sm:text-sm">— Nathalie V., Uccle</p>
+                </div>
+                <div class="reveal" style="transition-delay: 400ms;">
+                    <p class="text-3xl sm:text-4xl text-[#d4883e] mb-4 font-display">"</p>
+                    <p class="text-base sm:text-lg md:text-xl italic mb-4 sm:mb-6 leading-relaxed font-light">"Voyage sonore en équipe, huit collègues. Résultat : une heure de silence total après. Du jamais vu."</p>
+                    <p class="uppercase font-bold tracking-widest text-xs sm:text-sm">— Marc D., BeCentral</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="section-padding px-6">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl uppercase mb-6 md:mb-8 text-pretty">Envie d'essayer ?</h2>
+            <p class="text-base sm:text-lg md:text-xl mb-12 md:mb-16 font-light">Jess vous répond personnellement. Pas de formulaire à 15 champs. Un message, et c'est parti.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-left mb-12 md:mb-16">
+                <a href="mailto:wonderlhang@gmail.com" class="p-6 sm:p-8 rounded-2xl bg-[#f8f1e8] border-2 border-[#b85c38]/10 hover:border-[#b85c38] transition-all group focus:outline-none focus:ring-2 focus:ring-[#b85c38]">
+                    <span class="block text-xs uppercase font-bold text-[#b85c38] mb-2">Email</span>
+                    <span class="text-lg sm:text-2xl font-display break-words group-hover:text-[#b85c38] transition-colors">wonderlhang@gmail.com</span>
+                </a>
+                <a href="tel:+32497752718" class="p-6 sm:p-8 rounded-2xl bg-[#f8f1e8] border-2 border-[#b85c38]/10 hover:border-[#b85c38] transition-all group focus:outline-none focus:ring-2 focus:ring-[#b85c38]">
+                    <span class="block text-xs uppercase font-bold text-[#b85c38] mb-2">Téléphone</span>
+                    <span class="text-lg sm:text-2xl font-display group-hover:text-[#b85c38] transition-colors">+32 497 75 27 18</span>
+                </a>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 mb-12 md:mb-16">
+                <a href="https://www.facebook.com/jess.lefebvre.94/" class="text-[#2a1810] font-bold uppercase tracking-widest hover:text-[#b85c38] transition-colors text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#b85c38] px-2 py-1 rounded">Facebook</a>
+                <a href="https://www.instagram.com/jessiecherry7/" class="text-[#2a1810] font-bold uppercase tracking-widest hover:text-[#b85c38] transition-colors text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#b85c38] px-2 py-1 rounded">Instagram</a>
+                <a href="https://www.youtube.com/channel/UCnsBBJyX8otqGZ8muK75kpg" class="text-[#2a1810] font-bold uppercase tracking-widest hover:text-[#b85c38] transition-colors text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#b85c38] px-2 py-1 rounded">YouTube</a>
+            </div>
+            <a href="mailto:wonderlhang@gmail.com" class="inline-block bg-[#b85c38] text-[#f8f1e8] px-8 sm:px-12 py-4 sm:py-5 rounded-full text-sm sm:text-lg font-bold uppercase tracking-[0.2em] shadow-xl hover:shadow-none hover:translate-y-1 transition-all focus:outline-none focus:ring-2 focus:ring-[#b85c38] focus:ring-offset-2">Écrivez à Jess</a>
+        </div>
+    </section>
+    <footer class="py-8 sm:py-12 px-6 border-t border-[#d4883e]/20 text-center">
+        <div class="max-w-7xl mx-auto">
+            <p class="font-display text-xl sm:text-2xl font-bold mb-4 sm:mb-6">WONDERL'HANG</p>
+            <p class="text-xs uppercase tracking-widest font-bold text-[#2a1810]/60">ASBL Productions Associées — TVA : BE 0896.755.397</p>
+            <p class="text-xs uppercase tracking-widest font-bold text-[#2a1810]/60 mt-2">Uccle, Bruxelles</p>
+        </div>
+    </footer>
+    <script is:inline>
+        const openBtn = document.getElementById('open-menu');
+        const closeBtn = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (openBtn && mobileMenu && closeBtn) {
+            openBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+            });
+            closeBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenu.classList.remove('translate-x-0');
+            });
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('translate-x-full');
+                    mobileMenu.classList.remove('translate-x-0');
+                });
+            });
+        }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        let lastScroll = 0;
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll <= 0) { nav.classList.remove('-translate-y-full'); return; }
+            if (currentScroll > lastScroll) nav.classList.add('-translate-y-full');
+            else nav.classList.remove('-translate-y-full');
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>

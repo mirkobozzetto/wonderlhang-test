@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wonderl'hang - Propositions de Refonte</title>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4" is:inline></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
-    <style>
+    <style is:inline>
         body { font-family: 'Inter', sans-serif; }
         .card-hover { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
         .card-hover:hover { transform: translateY(-8px) scale(1.02); }
@@ -20,21 +20,17 @@
         <p class="text-[#e8923e] text-sm uppercase tracking-[0.3em] mb-4">Proposition de refonte</p>
         <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-4">Wonderl'hang</h1>
         <p class="text-white/70 text-lg max-w-2xl mx-auto">
-            5 directions artistiques pour la one-page. Cliquez sur chaque carte pour voir la variante en plein écran dans un nouvel onglet.
+            5 directions artistiques pour la one-page. Cliquez sur chaque carte pour voir la variante en plein écran.
         </p>
-        <div class="mt-6 flex justify-center gap-4 text-xs uppercase tracking-widest text-white/40">
-            <span class="px-3 py-1 border border-white/10 rounded-full">Hero uniquement</span>
-            <span class="px-3 py-1 border border-[#e8923e]/30 text-[#e8923e] rounded-full">One-page complète</span>
-        </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-6 pb-12">
 
-        <h2 class="text-2xl font-bold mb-8 text-[#e8923e] uppercase tracking-widest">One-pages completes</h2>
+        <h2 class="text-2xl font-bold mb-8 text-[#e8923e] uppercase tracking-widest">Propositions</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
 
-            <a href="variants/vibe4b-warm-artisan-full.html" target="_blank" class="card-hover group block rounded-2xl overflow-hidden border-2 border-[#c4724e]/50 hover:border-[#c4724e] bg-zinc-900">
+            <a href="/variants/vibe4b-warm-artisan-full" target="_blank" class="card-hover group block rounded-2xl overflow-hidden border-2 border-[#c4724e]/50 hover:border-[#c4724e] bg-zinc-900">
                 <div class="aspect-video bg-gradient-to-br from-[#f5ede3] via-[#e8d5c4] to-[#f5ede3] flex items-center justify-center relative overflow-hidden">
                     <span class="text-[#c4724e] text-3xl italic group-hover:rotate-[-2deg] transition-transform duration-500" style="font-family: 'Dancing Script', cursive;">Wonderl'hang</span>
                 </div>
@@ -54,7 +50,7 @@
                 </div>
             </a>
 
-            <a href="variants/vibe5b-bold-modern-full.html" target="_blank" class="card-hover group block rounded-2xl overflow-hidden border-2 border-[#e8923e]/50 hover:border-[#e8923e] bg-zinc-900">
+            <a href="/variants/vibe5b-bold-modern-full" target="_blank" class="card-hover group block rounded-2xl overflow-hidden border-2 border-[#e8923e]/50 hover:border-[#e8923e] bg-zinc-900">
                 <div class="aspect-video bg-black flex items-center justify-center relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-8 bg-[#e8923e] flex items-center overflow-hidden">
                         <span class="text-black text-xs font-bold uppercase tracking-tighter whitespace-nowrap">HANDPAN LIVE • BRUXELLES • ATELIERS •</span>
@@ -77,7 +73,7 @@
                 </div>
             </a>
 
-            <a href="variants/vibe6-warm-bold-hybrid.html" target="_blank" class="card-hover group block rounded-2xl overflow-hidden border-2 border-[#b85c38]/50 hover:border-[#b85c38] bg-zinc-900">
+            <a href="/variants/vibe6-warm-bold-hybrid" target="_blank" class="card-hover group block rounded-2xl overflow-hidden border-2 border-[#b85c38]/50 hover:border-[#b85c38] bg-zinc-900">
                 <div class="aspect-video bg-gradient-to-br from-[#f8f1e8] via-[#e8d5c4] to-[#f8f1e8] flex items-center justify-center relative overflow-hidden">
                     <span class="text-[#2a1810] text-2xl font-bold tracking-tighter uppercase group-hover:scale-110 transition-transform duration-500">WONDERL'HANG<span class="text-[#b85c38]">.</span></span>
                 </div>
@@ -100,16 +96,16 @@
 
         </div>
 
-        <h2 class="text-xl font-bold mb-8 text-white/40 uppercase tracking-widest">Heros uniquement (premières versions)</h2>
+        <h2 class="text-2xl font-bold mb-8 text-white/60 uppercase tracking-widest">Variations hero</h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pb-12 opacity-70">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pb-12">
 
-            <a href="variants/vibe4-warm-artisan.html" target="_blank" class="card-hover group block rounded-2xl overflow-hidden border border-white/10 hover:border-orange-500/50 bg-zinc-900">
+            <a href="/variants/vibe4-warm-artisan" target="_blank" class="card-hover group block rounded-2xl overflow-hidden border border-white/10 hover:border-orange-500/50 bg-zinc-900">
                 <div class="aspect-[21/9] bg-gradient-to-br from-[#f5ede3] via-[#e8d5c4] to-[#f5ede3] flex items-center justify-center relative overflow-hidden">
                     <span class="text-[#c4724e] text-2xl italic" style="font-family: 'Dancing Script', cursive;">Wonderl'hang</span>
                 </div>
                 <div class="p-4">
-                    <h3 class="text-base font-semibold text-orange-300">Vibe 4 — Warm Artisan (hero)</h3>
+                    <h3 class="text-base font-semibold text-orange-300">Warm Artisan — Hero</h3>
                     <div class="mt-2 flex gap-2">
                         <span class="w-4 h-4 rounded-full bg-[#f5ede3] border border-white/20"></span>
                         <span class="w-4 h-4 rounded-full bg-[#c4724e]"></span>
@@ -118,12 +114,12 @@
                 </div>
             </a>
 
-            <a href="variants/vibe5-bold-modern.html" target="_blank" class="card-hover group block rounded-2xl overflow-hidden border border-white/10 hover:border-orange-400/50 bg-zinc-900">
+            <a href="/variants/vibe5-bold-modern" target="_blank" class="card-hover group block rounded-2xl overflow-hidden border border-white/10 hover:border-orange-400/50 bg-zinc-900">
                 <div class="aspect-[21/9] bg-black flex items-center justify-center relative overflow-hidden">
                     <span class="text-5xl font-bold tracking-tighter uppercase leading-none">W<span class="text-[#e8923e]">'</span>H</span>
                 </div>
                 <div class="p-4">
-                    <h3 class="text-base font-semibold text-[#e8923e]">Vibe 5 — Bold Modern (hero)</h3>
+                    <h3 class="text-base font-semibold text-[#e8923e]">Bold Modern — Hero</h3>
                     <div class="mt-2 flex gap-2">
                         <span class="w-4 h-4 rounded-full bg-black border border-white/20"></span>
                         <span class="w-4 h-4 rounded-full bg-white border border-white/20"></span>

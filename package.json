@@ -1,0 +1,13 @@
+{
+  "name": "wonderlhang",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "latest"
+  },
+  "packageManager": "pnpm@10.6.5"
+}
