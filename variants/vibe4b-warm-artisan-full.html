@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wonderl'hang | Jess Lefebvre - Handpan à Bruxelles</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Dancing+Script:wght@600&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sand: #f5ede3;
+            --terracotta: #c4724e;
+            --deep-brown: #3d2c1e;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--sand);
+            color: var(--deep-brown);
+            overflow-x: hidden;
+        }
+        h1, h2, h3 { font-family: 'DM Serif Display', serif; }
+        .font-script { font-family: 'Dancing Script', cursive; }
+        .blob-mask-1 { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        .blob-mask-2 { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+        .nav-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            border: 2px solid var(--terracotta);
+            transition: all 0.3s ease;
+        }
+        .nav-dot.active {
+            background-color: var(--terracotta);
+            transform: scale(1.4);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--sand); }
+        ::-webkit-scrollbar-thumb { background: var(--terracotta); border-radius: 10px; }
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(196, 114, 78, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--terracotta);
+        }
+        .btn-terracotta {
+            background-color: var(--terracotta);
+            color: #fff;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(196, 114, 78, 0.2);
+        }
+        .btn-terracotta:hover {
+            background-color: var(--deep-brown);
+            transform: scale(1.05);
+        }
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .section-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <nav class="fixed right-8 top-1/2 -translate-y-1/2 flex-col gap-6 z-50 hidden lg:flex">
+        <a href="#hero" class="nav-dot active" data-section="hero"></a>
+        <a href="#about" class="nav-dot" data-section="about"></a>
+        <a href="#concerts" class="nav-dot" data-section="concerts"></a>
+        <a href="#ateliers" class="nav-dot" data-section="ateliers"></a>
+        <a href="#voyage" class="nav-dot" data-section="voyage"></a>
+        <a href="#contact" class="nav-dot" data-section="contact"></a>
+    </nav>
+    <header class="fixed top-0 left-0 w-full z-40 bg-[#f5ede3]/80 backdrop-blur-md px-6 py-4 lg:px-12 border-b border-[#c4724e]/10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#hero" class="text-3xl font-script text-[#c4724e]">Wonderl'hang</a>
+            <nav class="hidden md:flex gap-8 items-center text-sm font-semibold uppercase tracking-widest text-[#3d2c1e]">
+                <a href="#about" class="hover:text-[#c4724e] transition-colors">Expérience</a>
+                <a href="#ateliers" class="hover:text-[#c4724e] transition-colors">Ateliers</a>
+                <a href="#voyage" class="hover:text-[#c4724e] transition-colors">Voyage sonore</a>
+                <a href="#contact" class="hover:text-[#c4724e] transition-colors">Contact</a>
+                <a href="#contact" class="btn-terracotta !py-2 !px-6 !text-xs">Réserver</a>
+            </nav>
+            <button class="md:hidden text-[#3d2c1e]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+    <section id="hero" class="min-h-screen pt-32 pb-20 px-6 lg:px-12 flex items-center">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1">
+                <span class="font-script text-2xl text-[#c4724e] block mb-4">L'art du hang</span>
+                <h1 class="text-5xl lg:text-7xl leading-tight mb-8">
+                    Le handpan, c'est l'instrument que vous n'avez jamais entendu — et que vous n'oublierez pas.
+                </h1>
+                <p class="text-xl lg:text-2xl mb-10 leading-relaxed max-w-xl">
+                    Concerts intimistes, ateliers, voyages sonores. Wonderl'hang apporte les vibrations du handpan à vos événements, à Bruxelles et partout en Belgique.
+                </p>
+                <a href="#contact" class="btn-terracotta text-lg px-10 py-4">Réservez votre expérience</a>
+            </div>
+            <div class="order-1 lg:order-2 flex justify-center">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-[#c4724e]/20 blob-mask-1 translate-x-4 translate-y-4 -z-10 animate-pulse"></div>
+                    <img src="https://www.wonderlhang.be/wp-content/uploads/2022/04/cropped-DSC_2731-Modifier-scaled-1.jpg" alt="Jess Lefebvre jouant du handpan" class="w-full max-w-md h-[500px] object-cover blob-mask-1 shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="py-24 px-6 lg:px-12 bg-white/30 section-reveal">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="flex justify-center">
+                <img src="http://www.wonderlhang.be/wp-content/uploads/2021/01/135821705_10159232235994268_672114074632653608_o-1024x1019.jpg" alt="Jess Lefebvre portrait" class="w-72 h-72 lg:w-96 lg:h-96 object-cover rounded-full border-8 border-white shadow-xl">
+            </div>
+            <div>
+                <h2 class="text-4xl lg:text-5xl mb-8">Derrière Wonderl'hang, il y a Jess.</h2>
+                <div class="space-y-6 text-lg leading-loose">
+                    <p>Psychologue de formation, musicienne par accident. En 2015, Jess Lefebvre croise le chemin de Gérard Spencer et de son handpan. Coup de foudre double — pour l'homme et pour l'instrument.</p>
+                    <p>Elle ne lâchera ni l'un ni l'autre. Autodidacte, elle apprend en jouant, en écoutant, en osant. Des scènes d'Espéranzah au Concert Noble de Bruxelles, du Palais 12 au Winter Pop — le handpan l'a emmenée là où elle n'aurait jamais imaginé aller.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="concerts" class="py-24 px-6 lg:px-12 section-reveal">
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-[#c4724e] text-white rounded-[3rem] overflow-hidden flex flex-col lg:flex-row shadow-2xl">
+                <div class="lg:w-1/2 p-12 lg:p-20 flex flex-col justify-center">
+                    <h2 class="text-4xl lg:text-6xl mb-8 leading-tight">Un concert qui ne ressemble à rien de connu.</h2>
+                    <p class="text-xl mb-12 leading-relaxed">
+                        Imaginez un instrument en métal, posé sur les genoux, qui produit des sons qu'on jurerait venus d'ailleurs. Cristallins, suspendus dans l'air, comme si chaque note refusait de disparaître. En solo, en duo, en trio avec violon — chaque formule a sa couleur.
+                    </p>
+                    <a href="#contact" class="bg-white text-[#c4724e] hover:bg-[#3d2c1e] hover:text-white px-8 py-4 rounded-full font-bold text-center transition-all w-fit">Demandez un devis</a>
+                </div>
+                <div class="lg:w-1/2 h-80 lg:h-auto">
+                    <img src="https://www.wonderlhang.be/wp-content/uploads/2017/06/18527345_10155343907539268_4680125327708322652_o.jpg" alt="Concert de handpan" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="ateliers" class="py-24 px-6 lg:px-12 section-reveal">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-6xl mb-6">Touchez l'instrument. Pas besoin de savoir jouer.</h2>
+                <p class="text-xl max-w-2xl mx-auto">
+                    L'atelier commence par une écoute. Puis vos mains se posent sur le handpan. Aucune connaissance musicale requise. Juste de la curiosité.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="pricing-card p-10 rounded-3xl text-center">
+                    <h3 class="text-2xl mb-4">Solo 1h</h3>
+                    <p class="text-4xl font-bold text-[#c4724e] mb-6">40€</p>
+                    <p class="mb-8">Un moment privilégié pour découvrir l'instrument à votre rythme, à Uccle.</p>
+                    <a href="#contact" class="text-[#3d2c1e] font-bold border-b-2 border-[#c4724e] hover:text-[#c4724e] transition-colors">Réserver</a>
+                </div>
+                <div class="pricing-card p-10 rounded-3xl text-center">
+                    <h3 class="text-2xl mb-4">Duo 1h</h3>
+                    <p class="text-4xl font-bold text-[#c4724e] mb-6">50€</p>
+                    <p class="mb-8">Partagez la découverte avec un proche. Idéal en cadeau d'anniversaire.</p>
+                    <a href="#contact" class="text-[#3d2c1e] font-bold border-b-2 border-[#c4724e] hover:text-[#c4724e] transition-colors">Réserver</a>
+                </div>
+                <div class="pricing-card p-10 rounded-3xl text-center">
+                    <h3 class="text-2xl mb-4">Groupe Bruxelles</h3>
+                    <p class="text-4xl font-bold text-[#c4724e] mb-6">50€<span class="text-sm font-normal text-[#3d2c1e]">/pers</span></p>
+                    <p class="mb-8">Rejoignez un atelier collectif. Max 8 places, inscrivez-vous vite.</p>
+                    <a href="#contact" class="text-[#3d2c1e] font-bold border-b-2 border-[#c4724e] hover:text-[#c4724e] transition-colors">Réserver</a>
+                </div>
+                <div class="pricing-card p-10 rounded-3xl text-center">
+                    <h3 class="text-2xl mb-4">À domicile</h3>
+                    <p class="text-4xl font-bold text-[#c4724e] mb-6">300€</p>
+                    <p class="mb-8">Je me déplace chez vous avec mes instruments. Max 10 personnes. + frais de trajet.</p>
+                    <a href="#contact" class="text-[#3d2c1e] font-bold border-b-2 border-[#c4724e] hover:text-[#c4724e] transition-colors">Réserver</a>
+                </div>
+                <div class="pricing-card p-10 rounded-3xl text-center">
+                    <h3 class="text-2xl mb-4">Teambuilding</h3>
+                    <p class="text-4xl font-bold text-[#c4724e] mb-6">500€</p>
+                    <p class="mb-8">Une expérience de cohésion sonore pour souder votre équipe autrement.</p>
+                    <a href="#contact" class="text-[#3d2c1e] font-bold border-b-2 border-[#c4724e] hover:text-[#c4724e] transition-colors">Réserver</a>
+                </div>
+                <div class="pricing-card p-10 rounded-3xl text-center bg-white/60">
+                    <h3 class="text-2xl mb-4">Location</h3>
+                    <p class="text-4xl font-bold text-[#c4724e] mb-6">40€<span class="text-sm font-normal text-[#3d2c1e]">/sem</span></p>
+                    <p class="mb-8">Emportez la magie chez vous. Pièce d'identité requise.</p>
+                    <a href="#contact" class="text-[#3d2c1e] font-bold border-b-2 border-[#c4724e] hover:text-[#c4724e] transition-colors">Réserver</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="voyage" class="py-24 px-6 lg:px-12 section-reveal">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
+            <div class="lg:w-1/2">
+                <img src="https://www.wonderlhang.be/wp-content/uploads/2022/04/DSC8002-1024x576.jpg" alt="Voyage sonore" class="w-full h-[400px] object-cover blob-mask-2 shadow-2xl">
+            </div>
+            <div class="lg:w-1/2">
+                <span class="font-script text-3xl text-[#c4724e] block mb-4">Immersion</span>
+                <h2 class="text-4xl lg:text-6xl mb-8">Fermez les yeux. Le reste suit.</h2>
+                <p class="text-xl mb-6 leading-relaxed">
+                    Handpans, ravdrum, bols, voix, guitare, koshi, mantras. Ce n'est pas de la méditation. Ce n'est pas un spectacle. C'est quelque part entre les deux — un espace où le mental lâche prise.
+                </p>
+                <div class="bg-white/50 p-6 rounded-2xl border-l-4 border-[#c4724e] mb-10">
+                    <p class="text-2xl font-bold text-[#3d2c1e]">200€ <span class="text-base font-normal">+ frais de transport</span></p>
+                </div>
+                <a href="#contact" class="btn-terracotta">Réserver un voyage</a>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 px-6 lg:px-12 bg-white/20">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl text-center mb-16">Ce qu'ils en disent.</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center italic text-lg leading-relaxed">
+                    <p class="mb-6">"On avait réservé Jess pour notre mariage. Trois mois après, nos invités nous en parlent encore. Ma belle-mère a pleuré — et ce n'est pas une femme qui pleure facilement."</p>
+                    <span class="font-bold text-[#c4724e] not-italic">— Émilie & Thomas, Waterloo</span>
+                </div>
+                <div class="text-center italic text-lg leading-relaxed">
+                    <p class="mb-6">"J'ai offert l'atelier à mon fils de 14 ans qui ne voulait pas y aller. Il est ressorti en demandant quand est-ce qu'on y retourne."</p>
+                    <span class="font-bold text-[#c4724e] not-italic">— Nathalie V., Uccle</span>
+                </div>
+                <div class="text-center italic text-lg leading-relaxed">
+                    <p class="mb-6">"On a fait le voyage sonore en équipe, huit collègues pas franchement portés sur le new age. Résultat : une heure de silence total après la séance."</p>
+                    <span class="font-bold text-[#c4724e] not-italic">— Marc D., BeCentral</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="py-24 px-6 lg:px-12 bg-[#3d2c1e] text-[#f5ede3] section-reveal">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-20">
+                <div>
+                    <h2 class="text-5xl lg:text-7xl mb-12">Envie d'essayer ? Parlons-en.</h2>
+                    <div class="space-y-8 text-xl">
+                        <div class="flex items-center gap-6">
+                            <div class="w-12 h-12 rounded-full border border-[#c4724e] flex items-center justify-center text-[#c4724e]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            </div>
+                            <a href="mailto:wonderlhang@gmail.com" class="hover:text-[#c4724e] transition-colors">wonderlhang@gmail.com</a>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <div class="w-12 h-12 rounded-full border border-[#c4724e] flex items-center justify-center text-[#c4724e]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                            </div>
+                            <a href="tel:+32497752718" class="hover:text-[#c4724e] transition-colors">+32 497 75 27 18</a>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <div class="w-12 h-12 rounded-full border border-[#c4724e] flex items-center justify-center text-[#c4724e]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            </div>
+                            <span>Uccle, Bruxelles</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 mt-16">
+                        <a href="https://www.facebook.com/jess.lefebvre.94/" class="text-[#c4724e] hover:text-[#f5ede3] transition-colors font-bold uppercase tracking-widest text-sm">Facebook</a>
+                        <a href="https://www.youtube.com/channel/UCnsBBJyX8otqGZ8muK75kpg" class="text-[#c4724e] hover:text-[#f5ede3] transition-colors font-bold uppercase tracking-widest text-sm">YouTube</a>
+                        <a href="https://www.instagram.com/jessiecherry7/" class="text-[#c4724e] hover:text-[#f5ede3] transition-colors font-bold uppercase tracking-widest text-sm">Instagram</a>
+                    </div>
+                </div>
+                <div class="bg-white/10 p-10 rounded-[2rem]">
+                    <h3 class="text-2xl mb-8">Écrivez à Jess</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest mb-2 font-bold">Votre Nom</label>
+                            <input type="text" class="w-full bg-transparent border-b border-[#c4724e] py-3 focus:outline-none focus:border-white transition-colors" placeholder="Nom complet">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest mb-2 font-bold">Votre Email</label>
+                            <input type="email" class="w-full bg-transparent border-b border-[#c4724e] py-3 focus:outline-none focus:border-white transition-colors" placeholder="Email">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest mb-2 font-bold">Votre Projet</label>
+                            <textarea rows="4" class="w-full bg-transparent border-b border-[#c4724e] py-3 focus:outline-none focus:border-white transition-colors" placeholder="Dites-moi tout..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-terracotta w-full mt-4">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="py-12 px-6 bg-[#3d2c1e] text-[#f5ede3]/60 text-sm border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <p>ASBL Productions Associées — TVA : BE 0896.755.397</p>
+            <p>Wonderl'hang — Bruxelles</p>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.section-reveal').forEach(s => observer.observe(s));
+        window.addEventListener('scroll', () => {
+            let current = "";
+            document.querySelectorAll('section[id]').forEach(section => {
+                if (pageYOffset >= section.offsetTop - 200) current = section.getAttribute('id');
+            });
+            document.querySelectorAll('.nav-dot').forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('data-section') === current) dot.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

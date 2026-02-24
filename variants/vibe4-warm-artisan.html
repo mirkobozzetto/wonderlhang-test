@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wonderl'hang | Expérience Artisanale</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Dancing+Script:wght@500&family=Outfit:wght@300;400&display=swap" rel="stylesheet">
+    <style type="text/css">
+        @theme {
+            --color-sand: #f5ede3;
+            --color-terracotta: #c4724e;
+            --color-clay: #3d2c1e;
+            --font-display: 'DM Serif Display', serif;
+            --font-hand: 'Dancing Script', cursive;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        .paper-texture {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 50;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .blob-mask { clip-path: url(#organic-blob); }
+
+        @keyframes slowFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
+        .animate-float { animation: slowFloat 8s ease-in-out infinite; }
+
+        .hand-underline { position: relative; }
+        .hand-underline::after {
+            content: "";
+            position: absolute;
+            bottom: -5px; left: 0;
+            width: 100%; height: 8px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0 5 Q 25 0, 50 5 T 100 5' stroke='%23c4724e' stroke-width='2' fill='transparent'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+        }
+
+        .nav-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            border: 1px solid var(--color-terracotta);
+            transition: all 0.3s ease;
+        }
+        .nav-dot.active {
+            background-color: var(--color-terracotta);
+            transform: scale(1.4);
+        }
+
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-sand font-body text-clay selection:bg-terracotta/20">
+    <div class="paper-texture"></div>
+
+    <svg width="0" height="0" class="absolute">
+        <defs>
+            <clipPath id="organic-blob" clipPathUnits="objectBoundingBox">
+                <path d="M0.85,0.2 C0.95,0.4 0.9,0.7 0.75,0.85 C0.6,1 0.3,0.95 0.15,0.8 C0,0.65 0.05,0.35 0.2,0.15 C0.35,0 0.7,0 0.85,0.2"></path>
+            </clipPath>
+        </defs>
+    </svg>
+
+    <aside class="fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-6 items-center">
+        <div class="h-12 w-[1px] bg-terracotta/30"></div>
+        <a href="#hero" class="nav-dot active" aria-label="Accueil"></a>
+        <a href="#about" class="nav-dot" aria-label="À propos"></a>
+        <a href="#workshops" class="nav-dot" aria-label="Ateliers"></a>
+        <a href="#contact" class="nav-dot" aria-label="Contact"></a>
+        <div class="h-12 w-[1px] bg-terracotta/30"></div>
+    </aside>
+
+    <nav class="absolute top-0 left-0 w-full px-8 py-8 flex justify-between items-center z-30">
+        <div class="font-hand text-3xl text-terracotta">Wonderl'hang</div>
+        <div class="hidden md:flex gap-12 text-sm uppercase tracking-widest font-light">
+            <a href="#" class="hover:text-terracotta transition-colors">Expérience</a>
+            <a href="#" class="hover:text-terracotta transition-colors">La Vibration</a>
+            <a href="#" class="hover:text-terracotta transition-colors">Agenda</a>
+        </div>
+        <button class="border border-clay/20 px-6 py-2 rounded-full text-sm hover:bg-clay hover:text-sand transition-all duration-500 cursor-pointer">
+            Réserver
+        </button>
+    </nav>
+
+    <section id="hero" class="relative min-h-screen flex items-center justify-center px-8 pt-20 overflow-hidden">
+        <div class="absolute top-[20%] left-[10%] opacity-20 animate-float pointer-events-none">
+            <svg width="120" height="120" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="0.5" stroke-dasharray="4 4"/>
+            </svg>
+        </div>
+        <div class="absolute bottom-[15%] right-[5%] opacity-20 animate-float pointer-events-none" style="animation-delay: -2s;">
+            <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+                <path d="M10,100 Q50,20 100,100 T190,100" stroke="currentColor" stroke-width="0.5"/>
+            </svg>
+        </div>
+
+        <div class="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="z-10">
+                <span class="inline-block font-hand text-2xl text-terracotta mb-4 opacity-0" id="fade-sub">
+                    Par Jess, passionnée & autodidacte
+                </span>
+                <h1 class="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.1] mb-8 opacity-0" id="fade-title">
+                    L'âme du <span class="hand-underline">Handpan</span> au c&oelig;ur de Bruxelles.
+                </h1>
+                <p class="text-lg md:text-xl text-clay max-w-lg mb-12 leading-relaxed opacity-0" id="fade-text">
+                    Plongez dans un univers de bienveillance et de résonance. Des ateliers en petits groupes pour découvrir, vibrer et terminer par une jam session collective.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 opacity-0" id="fade-cta">
+                    <a href="#" class="bg-terracotta text-sand px-10 py-4 rounded-full text-lg flex items-center justify-center gap-3 hover:shadow-2xl hover:shadow-terracotta/30 transition-all duration-300 transform hover:-translate-y-1">
+                        Rejoindre un atelier
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                    <a href="#" class="px-10 py-4 rounded-full text-lg flex items-center justify-center border border-clay/30 hover:bg-clay/5 transition-all text-clay">
+                        Découvrir Jess
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative flex justify-center lg:justify-end">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] rounded-full border border-terracotta/10 -z-10 animate-pulse"></div>
+                <div class="relative w-full aspect-square max-w-[550px] group">
+                    <div class="w-full h-full blob-mask overflow-hidden shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]">
+                        <img
+                            src="https://www.wonderlhang.be/wp-content/uploads/2022/04/cropped-DSC_2731-Modifier-scaled-1.jpg"
+                            alt="Atelier Handpan Wonderl'hang"
+                            class="w-full h-full object-cover transition-all duration-700"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="absolute bottom-8 left-8 z-30">
+        <div class="flex items-center gap-4 text-xs tracking-widest text-clay uppercase">
+            <span>Scroll</span>
+            <div class="w-12 h-[1px] bg-clay/40"></div>
+            <span>Vibrez ensemble</span>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const elements = [
+                { id: 'fade-sub', delay: 200 },
+                { id: 'fade-title', delay: 400 },
+                { id: 'fade-text', delay: 600 },
+                { id: 'fade-cta', delay: 800 }
+            ];
+            elements.forEach(el => {
+                const target = document.getElementById(el.id);
+                target.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    target.style.transition = 'all 1.2s cubic-bezier(0.22, 1, 0.36, 1)';
+                    target.style.opacity = '1';
+                    target.style.transform = 'translateY(0)';
+                }, el.delay);
+            });
+        });
+
+        const btn = document.querySelector('.bg-terracotta');
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = `translate(0px, 0px)`;
+        });
+
+        document.querySelectorAll('.nav-dot').forEach(dot => {
+            dot.addEventListener('click', function() {
+                document.querySelectorAll('.nav-dot').forEach(d => d.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
