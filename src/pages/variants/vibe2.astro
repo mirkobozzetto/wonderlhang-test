@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WONDER L'HANG | Handpan & Électro Chillout Bruxelles</title>
+    <title>WONDER L'HANG | Handpan & Electro Chillout Bruxelles</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4" is:inline></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,8 +14,8 @@
     <style is:inline>
       :root {
         --copper: #e8923e;
-        --black: #000000;
-        --white: #ffffff;
+        --black: #0a0a0a;
+        --white: #fafafa;
       }
       body {
         font-family: "Space Grotesk", sans-serif;
@@ -25,422 +25,550 @@
       }
       .marquee-content {
         display: flex;
-        animation: marquee 20s linear infinite;
+        animation: marquee 25s linear infinite;
       }
       @keyframes marquee {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
       }
-      .spin-slow {
-        animation: spin 15s linear infinite;
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: var(--black); }
+      ::-webkit-scrollbar-thumb { background: var(--copper); border-radius: 2px; }
+      .grid-line-v {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: rgba(255, 255, 255, 0.04);
+        pointer-events: none;
       }
-      @keyframes spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
+      .grid-line-h {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.04);
+        pointer-events: none;
       }
-      .clip-diagonal {
-        clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+      .text-outline {
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+        color: transparent;
       }
-      .text-copper {
-        color: var(--copper);
+      .image-mask {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 12% 100%);
       }
-      .bg-copper {
-        background-color: var(--copper);
+      @media (max-width: 1024px) {
+        .image-mask { clip-path: none; }
       }
-      ::-webkit-scrollbar {
-        width: 8px;
+      .btn-premium {
+        padding: 1.25rem 3rem;
+        font-size: 0.875rem;
+        letter-spacing: 0.2em;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        position: relative;
+        overflow: hidden;
       }
-      ::-webkit-scrollbar-track {
-        background: var(--black);
-      }
-      ::-webkit-scrollbar-thumb {
+      .btn-premium::before {
+        content: '';
+        position: absolute;
+        inset: 0;
         background: var(--copper);
+        transform: translateY(100%);
+        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
       }
-      .btn-hover:hover {
-        transform: scale(1.02);
-        box-shadow: 0 0 20px var(--copper);
+      .btn-premium:hover::before {
+        transform: translateY(0);
+      }
+      .btn-premium span { position: relative; z-index: 1; }
+      .btn-premium:hover {
+        color: var(--black);
+        transform: translateY(-2px);
+        box-shadow: 0 20px 60px rgba(232, 146, 62, 0.15);
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .dot-pattern {
+        background-image: radial-gradient(rgba(0,0,0,0.07) 1px, transparent 1px);
+        background-size: 32px 32px;
       }
     </style>
   </head>
   <body class="antialiased">
-    <div
-      class="bg-[#e8923e] text-black py-4 border-b-2 border-black overflow-hidden sticky top-0 z-50"
-    >
-      <div
-        class="marquee-content whitespace-nowrap font-bold text-xl md:text-2xl uppercase tracking-tighter"
-      >
-        <span>HANDPAN LIVE • ÉLECTRO CHILLOUT • BRUXELLES • ATELIERS • JESSIECHERRY •&nbsp;</span>
-        <span>HANDPAN LIVE • ÉLECTRO CHILLOUT • BRUXELLES • ATELIERS • JESSIECHERRY •&nbsp;</span>
-        <span>HANDPAN LIVE • ÉLECTRO CHILLOUT • BRUXELLES • ATELIERS • JESSIECHERRY •&nbsp;</span>
-        <span>HANDPAN LIVE • ÉLECTRO CHILLOUT • BRUXELLES • ATELIERS • JESSIECHERRY •&nbsp;</span>
+
+    <div class="py-3 bg-white/95 backdrop-blur-sm text-black/80 font-medium uppercase tracking-[0.15em] text-[11px] sm:text-xs overflow-hidden border-b border-black/5 sticky top-0 z-50">
+      <div class="marquee-content whitespace-nowrap">
+        <span>HANDPAN LIVE&ensp;&middot;&ensp;ELECTRO CHILLOUT&ensp;&middot;&ensp;BRUXELLES&ensp;&middot;&ensp;ATELIERS&ensp;&middot;&ensp;JESSIE CHERRY&ensp;&middot;&ensp;HANDPAN LIVE&ensp;&middot;&ensp;ELECTRO CHILLOUT&ensp;&middot;&ensp;BRUXELLES&ensp;&middot;&ensp;ATELIERS&ensp;&middot;&ensp;JESSIE CHERRY&ensp;&middot;&ensp;</span>
+        <span>HANDPAN LIVE&ensp;&middot;&ensp;ELECTRO CHILLOUT&ensp;&middot;&ensp;BRUXELLES&ensp;&middot;&ensp;ATELIERS&ensp;&middot;&ensp;JESSIE CHERRY&ensp;&middot;&ensp;HANDPAN LIVE&ensp;&middot;&ensp;ELECTRO CHILLOUT&ensp;&middot;&ensp;BRUXELLES&ensp;&middot;&ensp;ATELIERS&ensp;&middot;&ensp;JESSIE CHERRY&ensp;&middot;&ensp;</span>
       </div>
     </div>
-    <section
-      class="relative min-h-screen flex flex-col justify-center px-6 lg:px-20 pt-20 pb-32 overflow-hidden border-b border-white/20"
-    >
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div class="lg:col-span-7 z-10">
-          <span
-            class="inline-block border-2 border-[#e8923e] text-[#e8923e] px-4 py-1 font-bold text-xl mb-8 uppercase tracking-widest"
-          >
+
+    <section class="relative min-h-screen flex flex-col lg:flex-row overflow-hidden">
+      <div class="grid-line-v left-[40%] hidden lg:block"></div>
+      <div class="grid-line-v left-[60%] hidden xl:block"></div>
+      <div class="grid-line-h top-[30%]"></div>
+      <div class="grid-line-h bottom-[20%]"></div>
+
+      <div class="w-full lg:w-[42%] flex flex-col justify-between p-8 md:p-16 lg:p-20 xl:p-24 z-10">
+        <div>
+          <span class="inline-block px-4 py-1.5 border border-[#e8923e]/40 text-[#e8923e] text-[11px] font-bold tracking-[0.4em] uppercase mb-16">
             Bruxelles / Son Vivant
           </span>
-          <h1
-            class="text-5xl sm:text-7xl md:text-9xl font-bold leading-none tracking-tighter mb-8 uppercase italic text-pretty"
-          >
-            WONDER <span class="text-[#e8923e]">L'</span>HANG
+
+          <h1 class="text-5xl sm:text-7xl md:text-8xl xl:text-9xl font-bold leading-[0.8] tracking-tighter uppercase mb-16 text-pretty">
+            WONDER<br /><span class="text-[#e8923e]">L'</span>HANG
           </h1>
-          <p class="text-xl md:text-3xl max-w-xl mb-12 font-light leading-snug text-white">
-            La résonance éthérée du handpan rencontre le rythme pulsant du downtempo électronique
-            moderne.
-          </p>
-          <a
-            href="#contact"
-            class="btn-hover inline-block bg-white text-black text-lg sm:text-2xl font-bold px-8 sm:px-12 py-5 sm:py-6 min-h-[44px] uppercase tracking-tighter transition-all duration-300"
-          >
-            Réserver un concert
-          </a>
-        </div>
-        <div class="lg:col-span-5 relative">
-          <div class="relative w-full aspect-[4/5] lg:w-[120%] lg:-ml-[20%] z-0 overflow-hidden">
-            <img
-              src="https://www.wonderlhang.be/wp-content/uploads/2022/04/cropped-DSC_2731-Modifier-scaled-1.jpg"
-              alt="Wonderlhang Live"
-              class="w-full h-full object-cover clip-diagonal"
-            />
+
+          <div class="max-w-sm space-y-10">
+            <p class="text-lg md:text-xl font-light leading-relaxed text-white/70">
+              La resonance etheree du handpan rencontre le rythme pulsant du downtempo electronique moderne.
+            </p>
+
+            <a href="#contact" class="btn-premium inline-flex items-center gap-4 bg-white text-black font-bold uppercase min-h-[44px]">
+              <span class="flex items-center gap-4">
+                Reserver un concert
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </span>
+            </a>
           </div>
-          <div class="absolute -bottom-10 -left-10 md:-left-20 w-48 h-48 md:w-64 md:h-64 z-20">
-            <div class="absolute inset-0 rounded-full bg-black/85"></div>
-            <svg viewBox="0 0 200 200" class="relative w-full h-full spin-slow fill-[#e8923e]">
-              <path
-                id="circlePath"
-                d="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"
-                fill="transparent"></path>
-              <text class="uppercase font-bold text-[14px] tracking-[0.2em]">
-                <textPath href="#circlePath"
-                  >Musique Organique • Expérience Immersive • Jessie Cherry •
-                </textPath>
-              </text>
-            </svg>
+        </div>
+
+        <div class="mt-24 lg:mt-0 flex flex-col sm:flex-row justify-between items-start sm:items-end border-t border-white/5 pt-8 gap-6">
+          <div>
+            <p class="text-[#e8923e]/60 font-medium uppercase tracking-[0.3em] text-[11px] mb-2">Projet de</p>
+            <p class="text-lg font-medium uppercase tracking-wide">Jessie Cherry</p>
+          </div>
+          <div class="text-left sm:text-right">
+            <p class="text-white/30 uppercase tracking-[0.3em] text-[11px] mb-2">Fonde en</p>
+            <p class="text-lg font-light tracking-tighter text-white/60">2015 &mdash; BE</p>
           </div>
         </div>
       </div>
-      <div class="absolute inset-0 pointer-events-none opacity-20 grid grid-cols-6 h-full">
-        <div class="border-r border-white/50 h-full"></div>
-        <div class="border-r border-white/50 h-full"></div>
-        <div class="border-r border-white/50 h-full"></div>
-        <div class="border-r border-white/50 h-full"></div>
-        <div class="border-r border-white/50 h-full"></div>
+
+      <div class="w-full lg:w-[58%] relative min-h-[60vh] lg:min-h-screen overflow-hidden group">
+        <div class="absolute inset-0 flex items-center justify-center opacity-[0.06] pointer-events-none select-none overflow-hidden">
+          <span class="text-[28vw] font-bold text-outline uppercase whitespace-nowrap leading-none -rotate-12 translate-y-20">RESONANCE</span>
+        </div>
+
+        <div class="absolute inset-0 image-mask overflow-hidden">
+          <img
+            src="https://www.wonderlhang.be/wp-content/uploads/2022/04/cropped-DSC_2731-Modifier-scaled-1.jpg"
+            alt="Wonderlhang Live Performance"
+            class="w-full h-full object-cover transition-all duration-[2s] group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-transparent to-transparent opacity-70"></div>
+          <div class="absolute inset-0 bg-linear-to-r from-[#0a0a0a] via-transparent to-transparent lg:block hidden"></div>
+        </div>
+
       </div>
     </section>
-    <section class="bg-white text-black py-32 px-6 lg:px-20 relative overflow-hidden">
+
+    <section class="bg-white text-black py-24 md:py-48 px-6 lg:px-20 border-t border-black/5">
       <div class="max-w-7xl mx-auto">
-        <h2
-          class="text-5xl md:text-8xl font-bold uppercase tracking-tighter mb-20 leading-none text-pretty"
-        >
-          DERRIÈRE WONDERL'HANG, <br />IL Y A JESS
-        </h2>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div class="relative">
-            <div class="aspect-square rounded-full overflow-hidden border-[15px] border-black p-2">
+        <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-8 mb-24 md:mb-32">
+          <h2 class="text-5xl md:text-8xl lg:text-9xl font-bold uppercase tracking-tighter leading-[0.8] max-w-4xl">
+            DERRIERE<br />WONDERL'HANG,<br /><span class="text-[#e8923e]">IL Y A JESS</span>
+          </h2>
+          <div class="flex flex-col items-start md:items-end shrink-0">
+            <span class="text-[11px] uppercase tracking-[0.4em] font-bold text-black/40 mb-4">L'Artiste</span>
+            <div class="w-16 h-px bg-[#e8923e]/40"></div>
+          </div>
+        </div>
+
+        <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          <div class="lg:col-span-5 relative group">
+            <div class="relative z-10 overflow-hidden bg-black aspect-[4/5]">
               <img
                 src="http://www.wonderlhang.be/wp-content/uploads/2021/01/135821705_10159232235994268_672114074632653608_o-1024x1019.jpg"
                 alt="Jess Lefebvre"
-                class="w-full h-full object-cover rounded-full"
+                class="w-full h-full object-cover opacity-95 group-hover:scale-[1.03] transition-transform duration-[1.5s]"
               />
             </div>
-            <div
-              class="absolute top-0 right-0 bg-[#e8923e] text-white p-6 font-bold text-xl uppercase -rotate-12"
-            >
-              Authentique
+            <div class="absolute -bottom-6 -left-6 w-24 h-24 border-l border-b border-[#e8923e]/20"></div>
+          </div>
+
+          <div class="lg:col-span-7 flex flex-col justify-center">
+            <div class="space-y-12 md:space-y-16">
+              <p class="text-2xl md:text-4xl font-light leading-[1.2] tracking-tight border-l-2 border-[#e8923e]/40 pl-8 md:pl-12 text-black/90">
+                Psychologue de formation,<br />musicienne par accident
+              </p>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 pt-12 border-t border-black/5">
+                <p class="text-base leading-[1.8] font-light text-black/75">
+                  En 2015, Jess Lefebvre croise le chemin de Gerard Spencer et de son handpan. Un instant suspendu qui devient un tournant de vie. Coup de foudre double &mdash; pour l'homme et pour l'instrument.
+                </p>
+                <p class="text-base leading-[1.8] font-light text-black/75">
+                  Autodidacte, elle apprend en jouant, en ecoutant, en osant l'emotion pure. Des scenes d'Esperanzah au prestigieux Concert Noble de Bruxelles, elle insuffle sa sensibilite dans chaque vibration.
+                </p>
+              </div>
             </div>
           </div>
-          <div class="space-y-8">
-            <p
-              class="text-3xl md:text-4xl font-bold leading-tight uppercase italic border-l-8 border-[#e8923e] pl-8"
-            >
-              Psychologue de formation, musicienne par accident.
-            </p>
-            <p class="text-xl md:text-2xl leading-relaxed font-medium">
-              En 2015, Jess Lefebvre croise le chemin de Gérard Spencer et de son handpan. Coup de
-              foudre double — pour l'homme et pour l'instrument. Autodidacte, elle apprend en
-              jouant, en écoutant, en osant. Des scènes d'Espéranzah au Concert Noble de Bruxelles.
-            </p>
-          </div>
         </div>
       </div>
     </section>
-    <section class="bg-black py-32 px-6 lg:px-20 border-y border-white/10">
-      <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col lg:flex-row gap-16 items-start mb-24">
-          <div class="lg:w-1/2">
-            <h2
-              class="text-5xl md:text-8xl font-bold uppercase tracking-tighter leading-none mb-8 text-pretty"
-            >
-              UN CONCERT <br /><span class="text-[#e8923e] italic">UNIQUE</span>
-            </h2>
-            <p class="text-lg md:text-2xl font-light mb-12 border-l-2 border-white pl-6 text-white">
-              Des sons cristallins qui s'entrelacent dans une atmosphère intime et envoûtante.
-              Chaque performance est un dialogue entre le métal vibrant et l'âme de l'auditeur.
-            </p>
-            <a
-              href="#contact"
-              class="inline-block border-2 border-white text-white hover:bg-[#e8923e] hover:border-[#e8923e] hover:text-black transition-all duration-300 px-8 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl font-bold uppercase min-h-[44px]"
-            >
-              Demandez un devis
-            </a>
-          </div>
-          <div class="lg:w-1/2 group overflow-hidden h-64 md:h-full">
-            <img
-              src="https://www.wonderlhang.be/wp-content/uploads/2017/06/18527345_10155343907539268_4680125327708322652_o.jpg"
-              alt="Handpan Concert"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-          </div>
-        </div>
+
+    <section class="relative bg-[#0a0a0a] min-h-[90vh] flex items-center overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img
+          src="https://www.wonderlhang.be/wp-content/uploads/2017/06/18527345_10155343907539268_4680125327708322652_o.jpg"
+          alt="Handpan Concert Experience"
+          class="w-full h-full object-cover opacity-60"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-[#0a0a0a]/60 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/20"></div>
       </div>
-    </section>
-    <section class="bg-white text-black py-32 px-6 lg:px-20">
-      <div class="max-w-7xl mx-auto">
-        <div class="mb-20">
-          <h2
-            class="text-6xl md:text-9xl font-bold uppercase tracking-tighter leading-none mb-4 text-pretty"
-          >
-            TOUCHEZ <br />L'INSTRUMENT
+
+      <div class="absolute top-0 right-[30%] w-px h-full bg-white/[0.03] pointer-events-none hidden lg:block"></div>
+      <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#e8923e]/10 to-transparent pointer-events-none"></div>
+
+      <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-20 py-32">
+        <div class="reveal max-w-3xl">
+          <div class="mb-8 flex items-center gap-4">
+            <span class="h-px w-10 bg-[#e8923e]/60"></span>
+            <span class="text-[#e8923e]/80 text-[11px] font-bold uppercase tracking-[0.4em]">Experience Immersive</span>
+          </div>
+
+          <h2 class="text-5xl md:text-8xl lg:text-9xl font-bold uppercase tracking-tighter leading-[0.85] mb-12 text-white">
+            UN CONCERT<br /><span class="text-[#e8923e] italic">UNIQUE</span>
           </h2>
-          <p class="text-3xl font-bold uppercase italic text-[#e8923e]">
-            Pas besoin de savoir jouer.
+
+          <p class="text-lg md:text-xl font-light text-white/60 leading-relaxed mb-16 max-w-xl border-l border-white/10 pl-8">
+            Des sons cristallins qui s'entrelacent dans une atmosphere intime et envoutante.
+            Chaque performance est un dialogue entre le metal vibrant et l'ame de l'auditeur.
+          </p>
+
+          <a href="#contact" class="group relative inline-flex items-center gap-4 border border-white/20 text-white px-10 py-5 text-xs font-bold uppercase tracking-[0.2em] overflow-hidden transition-all duration-700 hover:border-[#e8923e]/50 min-h-[44px]">
+            <span class="relative z-10 group-hover:text-black transition-colors duration-500">Reserver l'experience</span>
+            <span class="absolute inset-0 bg-[#e8923e] translate-y-full group-hover:translate-y-0 transition-transform duration-600 ease-out"></span>
+            <svg class="relative z-10 w-4 h-4 group-hover:text-black transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white text-black py-24 md:py-40 px-6 lg:px-20 dot-pattern">
+      <div class="max-w-7xl mx-auto">
+        <div class="reveal mb-20 md:mb-28">
+          <div class="flex items-center gap-4 mb-8">
+            <span class="h-px w-10 bg-[#e8923e]/40"></span>
+            <span class="text-[11px] uppercase tracking-[0.4em] font-bold text-black/50">Ateliers & Experiences</span>
+          </div>
+          <h2 class="text-5xl md:text-8xl lg:text-9xl font-bold uppercase tracking-tighter leading-[0.85] mb-6">
+            TOUCHEZ<br />L'INSTRUMENT
+          </h2>
+          <p class="text-lg font-light text-[#e8923e] uppercase tracking-[0.15em]">
+            Pas besoin de savoir jouer
           </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-2 border-black">
-          <div
-            class="p-8 sm:p-12 border-b md:border-r border-black hover:bg-black hover:text-white transition-colors group"
-          >
-            <h3 class="text-3xl font-bold uppercase mb-4">Solo</h3>
-            <p class="mb-8 font-medium">Initiation personnalisée de 1h à Uccle.</p>
-            <span
-              class="text-5xl font-black text-[#e8923e] group-hover:text-white transition-colors"
-              >40€</span
-            >
+
+        <div class="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-black/[0.06]">
+          <div class="group relative p-10 lg:p-14 border-r border-b border-black/[0.06] transition-all duration-700 hover:bg-black/[0.02]">
+            <div class="absolute top-0 left-0 w-px h-0 bg-[#e8923e] group-hover:h-full transition-all duration-700"></div>
+            <span class="block text-[11px] tracking-[0.4em] uppercase text-black/50 mb-10 font-medium">Atelier Individuel</span>
+            <h3 class="text-3xl font-light tracking-tight uppercase mb-4 text-black">Solo</h3>
+            <p class="text-sm text-black/70 leading-relaxed font-light mb-16 max-w-[220px]">Immersion personnalisee de 1h dans notre atelier a Uccle</p>
+            <div class="flex items-baseline gap-1 transition-transform duration-500 group-hover:translate-x-1">
+              <span class="text-4xl font-light tracking-tight text-black">40</span>
+              <span class="text-base font-light text-[#e8923e]">&euro;</span>
+            </div>
           </div>
-          <div
-            class="p-8 sm:p-12 border-b lg:border-r border-black hover:bg-black hover:text-white transition-colors group"
-          >
-            <h3 class="text-3xl font-bold uppercase mb-4">Duo</h3>
-            <p class="mb-8 font-medium">Partagez l'expérience à deux.</p>
-            <span
-              class="text-5xl font-black text-[#e8923e] group-hover:text-white transition-colors"
-              >50€</span
-            >
+
+          <div class="group relative p-10 lg:p-14 border-r border-b border-black/[0.06] transition-all duration-700 hover:bg-black/[0.02]">
+            <div class="absolute top-0 left-0 w-px h-0 bg-[#e8923e] group-hover:h-full transition-all duration-700"></div>
+            <span class="block text-[11px] tracking-[0.4em] uppercase text-black/50 mb-10 font-medium">Partage & Harmonie</span>
+            <h3 class="text-3xl font-light tracking-tight uppercase mb-4 text-black">Duo</h3>
+            <p class="text-sm text-black/70 leading-relaxed font-light mb-16 max-w-[220px]">Partagez la vibration a deux pour une complicite unique</p>
+            <div class="flex items-baseline gap-1 transition-transform duration-500 group-hover:translate-x-1">
+              <span class="text-4xl font-light tracking-tight text-black">50</span>
+              <span class="text-base font-light text-[#e8923e]">&euro;</span>
+            </div>
           </div>
-          <div
-            class="p-8 sm:p-12 border-b md:border-r lg:border-r-0 border-black hover:bg-black hover:text-white transition-colors group"
-          >
-            <h3 class="text-3xl font-bold uppercase mb-4">Groupe</h3>
-            <p class="mb-8 font-medium">Atelier collectif immersif. Max 8 places.</p>
-            <span
-              class="text-5xl font-black text-[#e8923e] group-hover:text-white transition-colors"
-              >50€<span class="text-xl">/pers</span></span
-            >
+
+          <div class="group relative p-10 lg:p-14 border-r border-b border-black/[0.06] transition-all duration-700 hover:bg-black/[0.02]">
+            <div class="absolute top-0 left-0 w-px h-0 bg-[#e8923e] group-hover:h-full transition-all duration-700"></div>
+            <span class="block text-[11px] tracking-[0.4em] uppercase text-black/50 mb-10 font-medium">Energie Collective</span>
+            <h3 class="text-3xl font-light tracking-tight uppercase mb-4 text-black">Groupe</h3>
+            <p class="text-sm text-black/70 leading-relaxed font-light mb-16 max-w-[220px]">Atelier collectif immersif, limite a 8 participants</p>
+            <div class="flex items-baseline gap-1 transition-transform duration-500 group-hover:translate-x-1">
+              <span class="text-4xl font-light tracking-tight text-black">50</span>
+              <span class="text-base font-light text-[#e8923e]">&euro;<span class="text-[11px] uppercase tracking-[0.3em] ml-2 text-black/45">/ pers</span></span>
+            </div>
           </div>
-          <div
-            class="p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-black hover:bg-black hover:text-white transition-colors group"
-          >
-            <h3 class="text-3xl font-bold uppercase mb-4">Domicile</h3>
-            <p class="mb-8 font-medium">Je me déplace avec mes instruments. Max 10 pers.</p>
-            <span
-              class="text-5xl font-black text-[#e8923e] group-hover:text-white transition-colors"
-              >300€</span
-            >
+
+          <div class="group relative p-10 lg:p-14 border-r border-b border-black/[0.06] transition-all duration-700 hover:bg-black/[0.02]">
+            <div class="absolute top-0 left-0 w-px h-0 bg-[#e8923e] group-hover:h-full transition-all duration-700"></div>
+            <span class="block text-[11px] tracking-[0.4em] uppercase text-black/50 mb-10 font-medium">Service Exclusif</span>
+            <h3 class="text-3xl font-light tracking-tight uppercase mb-4 text-black">Domicile</h3>
+            <p class="text-sm text-black/70 leading-relaxed font-light mb-16 max-w-[220px]">L'experience s'invite chez vous avec une selection d'instruments</p>
+            <div class="flex items-baseline gap-1 transition-transform duration-500 group-hover:translate-x-1">
+              <span class="text-4xl font-light tracking-tight text-black">300</span>
+              <span class="text-base font-light text-[#e8923e]">&euro;</span>
+            </div>
           </div>
-          <div
-            class="p-8 sm:p-12 border-b md:border-b-0 md:border-r border-black hover:bg-black hover:text-white transition-colors group"
-          >
-            <h3 class="text-3xl font-bold uppercase mb-4">Teambuilding</h3>
-            <p class="mb-8 font-medium">Cohésion d'équipe par le son.</p>
-            <span
-              class="text-5xl font-black text-[#e8923e] group-hover:text-white transition-colors"
-              >500€</span
-            >
+
+          <div class="group relative p-10 lg:p-14 border-r border-b border-black/[0.06] transition-all duration-700 hover:bg-black/[0.02]">
+            <div class="absolute top-0 left-0 w-px h-0 bg-[#e8923e] group-hover:h-full transition-all duration-700"></div>
+            <span class="block text-[11px] tracking-[0.4em] uppercase text-black/50 mb-10 font-medium">Experience Corporate</span>
+            <h3 class="text-3xl font-light tracking-tight uppercase mb-4 text-black">Teambuilding</h3>
+            <p class="text-sm text-black/70 leading-relaxed font-light mb-16 max-w-[220px]">Cohesion d'equipe par l'ecoute et la vibration sonore</p>
+            <div class="flex items-baseline gap-1 transition-transform duration-500 group-hover:translate-x-1">
+              <span class="text-4xl font-light tracking-tight text-black">500</span>
+              <span class="text-base font-light text-[#e8923e]">&euro;</span>
+            </div>
           </div>
-          <div class="p-8 sm:p-12 hover:bg-black hover:text-white transition-colors group">
-            <h3 class="text-3xl font-bold uppercase mb-4">Location</h3>
-            <p class="mb-8 font-medium">Emportez un handpan chez vous.</p>
-            <span
-              class="text-5xl font-black text-[#e8923e] group-hover:text-white transition-colors"
-              >40€<span class="text-xl">/sem</span></span
-            >
+
+          <div class="group relative p-10 lg:p-14 border-r border-b border-black/[0.06] transition-all duration-700 hover:bg-black/[0.02]">
+            <div class="absolute top-0 left-0 w-px h-0 bg-[#e8923e] group-hover:h-full transition-all duration-700"></div>
+            <span class="block text-[11px] tracking-[0.4em] uppercase text-black/50 mb-10 font-medium">Prolonger l'Instant</span>
+            <h3 class="text-3xl font-light tracking-tight uppercase mb-4 text-black">Location</h3>
+            <p class="text-sm text-black/70 leading-relaxed font-light mb-16 max-w-[220px]">Poursuivez l'apprentissage a votre rythme chez vous</p>
+            <div class="flex items-baseline gap-1 transition-transform duration-500 group-hover:translate-x-1">
+              <span class="text-4xl font-light tracking-tight text-black">40</span>
+              <span class="text-base font-light text-[#e8923e]">&euro;<span class="text-[11px] uppercase tracking-[0.3em] ml-2 text-black/45">/ sem</span></span>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="bg-black py-32 px-6 lg:px-20 relative overflow-hidden">
+
+    <section class="bg-[#0a0a0a] py-40 px-6 lg:px-20 relative min-h-[85vh] flex items-center overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img
+          src="https://www.wonderlhang.be/wp-content/uploads/2022/04/DSC8002-1024x576.jpg"
+          alt="Atmosphere Voyage Sonore"
+          class="w-full h-full object-cover opacity-35 brightness-75"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/50"></div>
+      </div>
+
+      <div class="absolute right-[12%] top-0 h-full w-px bg-white/[0.03] hidden lg:block"></div>
+      <div class="absolute right-[18%] top-0 h-full w-px bg-white/[0.02] hidden xl:block"></div>
+
+      <div class="max-w-7xl mx-auto relative z-10 w-full">
+        <div class="reveal border-l border-[#e8923e]/30 pl-8 md:pl-16">
+          <span class="text-[#e8923e]/60 uppercase tracking-[0.5em] text-[11px] font-bold mb-10 block">Voyage Sonore</span>
+
+          <h2 class="text-5xl md:text-8xl lg:text-9xl font-bold uppercase tracking-tighter leading-[0.85] mb-14 text-white">
+            FERMEZ LES<br /><span class="text-[#e8923e]">YEUX</span>
+          </h2>
+
+          <div class="max-w-lg">
+            <p class="text-lg font-light leading-relaxed mb-16 text-white/50">
+              Handpans, ravdrum, bols, voix, guitare, koshi, mantras. Ce n'est pas de la meditation.
+              Ce n'est pas un spectacle. C'est un entre-deux suspendu, quelque part entre la terre et l'ailleurs.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-10">
+              <a href="#contact" class="group relative inline-flex items-center gap-4 bg-white text-black px-10 py-5 text-xs font-bold uppercase tracking-[0.2em] transition-all duration-600 hover:bg-[#e8923e] hover:text-white overflow-hidden min-h-[44px]">
+                <span>Reserver l'instant</span>
+                <svg class="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12H19M19 12L13 6M19 12L13 18"></path>
+                </svg>
+              </a>
+
+              <div class="flex flex-col border-l border-white/10 pl-8">
+                <span class="text-white text-2xl font-light tracking-tight">200&euro;</span>
+                <span class="text-white/25 text-[11px] uppercase tracking-[0.3em] mt-1">+ frais de deplacement</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white text-black py-32 lg:py-48 px-6 lg:px-20 border-t border-black/5 relative overflow-hidden dot-pattern">
       <div class="max-w-7xl mx-auto relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div class="order-2 lg:order-1 overflow-hidden">
-            <img
-              src="https://www.wonderlhang.be/wp-content/uploads/2022/04/DSC8002-1024x576.jpg"
-              alt="Voyage Sonore"
-              class="w-full h-auto border-4 border-[#e8923e] shadow-[20px_20px_0px_#e8923e]"
-            />
-          </div>
-          <div class="order-1 lg:order-2">
-            <h2
-              class="text-5xl md:text-8xl font-bold uppercase tracking-tighter leading-none mb-8 text-pretty"
-            >
-              FERMEZ LES YEUX, <br /><span class="text-[#e8923e]">LE RESTE SUIT</span>
-            </h2>
-            <p class="text-lg md:text-2xl font-light leading-relaxed mb-8 text-white">
-              Handpans, ravdrum, bols, voix, guitare, koshi, mantras. Ce n'est pas de la méditation.
-              Ce n'est pas un spectacle. C'est quelque part entre les deux.
-            </p>
-            <p class="text-2xl sm:text-3xl font-bold text-[#e8923e] mb-8">
-              200€ <span class="text-white text-base sm:text-lg font-light">+ transport</span>
-            </p>
-            <a
-              href="#contact"
-              class="inline-block bg-[#e8923e] text-black px-8 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl font-bold uppercase hover:bg-white transition-colors min-h-[44px]"
-              >Réserver un voyage</a
-            >
+        <div class="reveal flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
+          <h2 class="text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tighter leading-[0.85]">
+            Echos &<br />Ressentis
+          </h2>
+          <div class="flex items-center gap-6">
+            <div class="hidden md:block w-24 h-px bg-black/10"></div>
+            <span class="text-[11px] uppercase tracking-[0.4em] font-bold text-[#e8923e]">Temoignages</span>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="bg-white text-black py-32 px-6 lg:px-20 border-y-8 border-black">
-      <div class="max-w-7xl mx-auto">
-        <h2
-          class="text-4xl md:text-6xl font-black uppercase mb-20 text-center tracking-tighter text-pretty"
-        >
-          Ce qu'ils en disent
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div class="space-y-6">
-            <p class="text-2xl font-bold italic">
-              "On avait réservé Jess pour notre mariage. Trois mois après, nos invités nous en
-              parlent encore."
-            </p>
-            <p class="font-bold uppercase tracking-wider text-[#e8923e]">— Émilie & Thomas</p>
-          </div>
-          <div class="space-y-6 md:mt-20">
-            <p class="text-2xl font-bold italic">
-              "J'ai offert l'atelier à mon fils de 14 ans qui ne voulait pas y aller. Il est
-              ressorti en demandant quand est-ce qu'on y retourne."
-            </p>
-            <p class="font-bold uppercase tracking-wider text-[#e8923e]">— Nathalie V.</p>
-          </div>
-          <div class="space-y-6">
-            <p class="text-2xl font-bold italic">
-              "Le voyage sonore en équipe : huit collègues, une heure de silence total après. Du
-              jamais vu."
-            </p>
-            <p class="font-bold uppercase tracking-wider text-[#e8923e]">— Marc D.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="contact" class="bg-black py-40 px-6 lg:px-20 relative">
-      <div class="max-w-7xl mx-auto text-center">
-        <h2
-          class="text-4xl sm:text-6xl md:text-[10vw] font-black uppercase leading-none tracking-tighter mb-12 sm:mb-20 text-pretty"
-        >
-          ENVIE <br />D'ESSAYER ?
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 sm:gap-20 text-left mb-12 sm:mb-20">
-          <div class="space-y-8 sm:space-y-12">
+
+        <div class="reveal grid grid-cols-1 md:grid-cols-3 border-l border-black/[0.06]">
+          <div class="group p-8 md:p-12 border-r border-b md:border-b-0 border-black/[0.06] hover:bg-black/[0.015] transition-colors duration-700 min-h-[400px] flex flex-col justify-between">
             <div>
-              <h4
-                class="text-[#e8923e] uppercase font-bold text-lg sm:text-xl mb-4 tracking-widest"
-              >
-                Contact Direct
-              </h4>
-              <a
-                href="mailto:wonderlhang@gmail.com"
-                class="text-xl sm:text-3xl md:text-5xl font-bold hover:text-[#e8923e] transition-colors break-all min-h-[44px] inline-flex items-center"
-                >wonderlhang@gmail.com</a
-              >
-              <p class="text-lg sm:text-2xl font-medium mt-4">+32 497 75 27 18</p>
+              <span class="text-7xl font-light text-[#e8923e]/20 leading-none block -ml-2 mb-6 select-none group-hover:text-[#e8923e]/40 transition-colors duration-700">&ldquo;</span>
+              <p class="text-xl lg:text-2xl font-light leading-[1.3] tracking-tight -mt-4 text-black/80">
+                On avait reserve Jess pour notre mariage. Trois mois apres, nos invites nous en parlent encore.
+              </p>
             </div>
-            <div class="flex flex-wrap gap-4 sm:gap-8">
-              <a
-                href="https://www.instagram.com/jessiecherry7/"
-                class="text-lg sm:text-2xl font-bold uppercase hover:underline decoration-[#e8923e] decoration-4 min-h-[44px] inline-flex items-center"
-                >Instagram</a
-              >
-              <a
-                href="https://www.facebook.com/jess.lefebvre.94/"
-                class="text-lg sm:text-2xl font-bold uppercase hover:underline decoration-[#e8923e] decoration-4 min-h-[44px] inline-flex items-center"
-                >Facebook</a
-              >
-              <a
-                href="https://www.youtube.com/channel/UCnsBBJyX8otqGZ8muK75kpg"
-                class="text-lg sm:text-2xl font-bold uppercase hover:underline decoration-[#e8923e] decoration-4 min-h-[44px] inline-flex items-center"
-                >YouTube</a
-              >
+            <div class="mt-12">
+              <div class="w-6 h-px bg-[#e8923e]/30 mb-4"></div>
+              <p class="font-bold uppercase tracking-[0.2em] text-[#e8923e] text-[11px]">Emilie & Thomas</p>
+              <p class="text-[11px] uppercase tracking-[0.2em] text-black/45 mt-1 font-medium">Ceremonie Laique</p>
             </div>
           </div>
-          <div class="bg-white text-black p-8 sm:p-12">
-            <h4 class="uppercase font-black text-2xl sm:text-3xl mb-6 sm:mb-8">Écrivez à Jess</h4>
-            <form class="space-y-6" onsubmit="event.preventDefault()">
-              <input
-                type="text"
-                placeholder="VOTRE NOM"
-                class="w-full bg-transparent border-b-4 border-black p-3 sm:p-4 text-base sm:text-xl font-bold focus:outline-none focus:border-[#e8923e] placeholder:text-black/30 min-h-[44px]"
-              />
-              <input
-                type="email"
-                placeholder="VOTRE EMAIL"
-                class="w-full bg-transparent border-b-4 border-black p-3 sm:p-4 text-base sm:text-xl font-bold focus:outline-none focus:border-[#e8923e] placeholder:text-black/30 min-h-[44px]"
-              />
-              <textarea
-                placeholder="VOTRE MESSAGE"
-                rows="3"
-                class="w-full bg-transparent border-b-4 border-black p-3 sm:p-4 text-base sm:text-xl font-bold focus:outline-none focus:border-[#e8923e] placeholder:text-black/30"
-              ></textarea>
-              <button
-                class="w-full bg-black text-white p-5 sm:p-6 font-bold text-lg sm:text-2xl uppercase hover:bg-[#e8923e] transition-colors mt-6 sm:mt-8 min-h-[44px]"
-                >Envoyer</button
-              >
-            </form>
+
+          <div class="group p-8 md:p-12 border-r border-b md:border-b-0 border-black/[0.06] bg-black/[0.02] hover:bg-black/[0.015] transition-all duration-700 min-h-[400px] flex flex-col justify-between md:-translate-y-6 md:shadow-xl md:shadow-black/[0.03]">
+            <div>
+              <span class="text-7xl font-light text-[#e8923e]/20 leading-none block -ml-2 mb-6 select-none group-hover:text-[#e8923e]/40 transition-colors duration-700">&ldquo;</span>
+              <p class="text-xl lg:text-2xl font-light leading-[1.3] tracking-tight -mt-4 text-black/80">
+                J'ai offert l'atelier a mon fils de 14 ans qui ne voulait pas y aller. Il est ressorti en demandant quand est-ce qu'on y retourne.
+              </p>
+            </div>
+            <div class="mt-12">
+              <div class="w-6 h-px bg-[#e8923e]/30 mb-4"></div>
+              <p class="font-bold uppercase tracking-[0.2em] text-[#e8923e] text-[11px]">Nathalie V.</p>
+              <p class="text-[11px] uppercase tracking-[0.2em] text-black/45 mt-1 font-medium">Atelier Decouverte</p>
+            </div>
+          </div>
+
+          <div class="group p-8 md:p-12 border-r border-black/[0.06] hover:bg-black/[0.015] transition-colors duration-700 min-h-[400px] flex flex-col justify-between">
+            <div>
+              <span class="text-7xl font-light text-[#e8923e]/20 leading-none block -ml-2 mb-6 select-none group-hover:text-[#e8923e]/40 transition-colors duration-700">&ldquo;</span>
+              <p class="text-xl lg:text-2xl font-light leading-[1.3] tracking-tight -mt-4 text-black/80">
+                Le voyage sonore en equipe : huit collegues, une heure de silence total apres. Du jamais vu.
+              </p>
+            </div>
+            <div class="mt-12">
+              <div class="w-6 h-px bg-[#e8923e]/30 mb-4"></div>
+              <p class="font-bold uppercase tracking-[0.2em] text-[#e8923e] text-[11px]">Marc D.</p>
+              <p class="text-[11px] uppercase tracking-[0.2em] text-black/45 mt-1 font-medium">Team Building</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <footer class="bg-[#e8923e] text-black py-8 border-t-2 border-black overflow-hidden">
-      <div
-        class="marquee-content whitespace-nowrap font-black text-2xl md:text-4xl uppercase tracking-tighter"
-      >
-        <span>WONDER L'HANG • BRUXELLES • 2025 • MUSIQUE VIVANTE •&nbsp;</span>
-        <span>WONDER L'HANG • BRUXELLES • 2025 • MUSIQUE VIVANTE •&nbsp;</span>
-        <span>WONDER L'HANG • BRUXELLES • 2025 • MUSIQUE VIVANTE •&nbsp;</span>
+
+    <section id="contact" class="bg-[#0a0a0a] py-32 sm:py-48 px-6 lg:px-20 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-1/3 h-full border-l border-white/[0.03] pointer-events-none hidden lg:block"></div>
+
+      <div class="max-w-7xl mx-auto">
+        <div class="reveal border-t border-white/[0.06] pt-16 mb-20 sm:mb-28">
+          <h2 class="text-5xl sm:text-7xl md:text-[10vw] font-bold uppercase leading-[0.85] tracking-tighter text-white">
+            ENVIE<br /><span class="text-[#e8923e]">D'ESSAYER ?</span>
+          </h2>
+        </div>
+
+        <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-0 border-t border-white/[0.06]">
+          <div class="lg:col-span-5 py-12 lg:pr-12 lg:border-r lg:border-white/[0.06] space-y-16">
+            <div>
+              <h4 class="text-[#e8923e]/60 uppercase font-bold text-[11px] tracking-[0.4em] mb-8">Contact Direct</h4>
+              <a href="mailto:wonderlhang@gmail.com" class="block text-xl sm:text-2xl font-light hover:text-[#e8923e] transition-all duration-500 break-all min-h-[44px] leading-relaxed">
+                wonderlhang@gmail.com
+              </a>
+              <p class="text-lg font-light text-white/40 mt-3">+32 497 75 27 18</p>
+            </div>
+
+            <div>
+              <h4 class="text-[#e8923e]/60 uppercase font-bold text-[11px] tracking-[0.4em] mb-8">Reseaux</h4>
+              <div class="flex flex-col space-y-0">
+                <a href="https://www.instagram.com/jessiecherry7/" class="group flex items-center justify-between text-sm uppercase tracking-[0.2em] font-medium border-b border-white/[0.04] py-5 hover:border-[#e8923e]/30 transition-colors min-h-[44px]">
+                  <span class="text-white/70 group-hover:text-white transition-colors">Instagram</span>
+                  <span class="text-[#e8923e] opacity-0 group-hover:opacity-100 transition-opacity text-xs">&nearr;</span>
+                </a>
+                <a href="https://www.facebook.com/jess.lefebvre.94/" class="group flex items-center justify-between text-sm uppercase tracking-[0.2em] font-medium border-b border-white/[0.04] py-5 hover:border-[#e8923e]/30 transition-colors min-h-[44px]">
+                  <span class="text-white/70 group-hover:text-white transition-colors">Facebook</span>
+                  <span class="text-[#e8923e] opacity-0 group-hover:opacity-100 transition-opacity text-xs">&nearr;</span>
+                </a>
+                <a href="https://www.youtube.com/channel/UCnsBBJyX8otqGZ8muK75kpg" class="group flex items-center justify-between text-sm uppercase tracking-[0.2em] font-medium border-b border-white/[0.04] py-5 hover:border-[#e8923e]/30 transition-colors min-h-[44px]">
+                  <span class="text-white/70 group-hover:text-white transition-colors">YouTube</span>
+                  <span class="text-[#e8923e] opacity-0 group-hover:opacity-100 transition-opacity text-xs">&nearr;</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 lg:pl-12 py-12">
+            <div class="max-w-xl">
+              <h4 class="text-white uppercase font-bold text-2xl sm:text-3xl mb-12 tracking-tight leading-tight">Demande de<br />reservation</h4>
+              <form class="grid grid-cols-1 gap-8" onsubmit="event.preventDefault()">
+                <div class="relative">
+                  <input type="text" id="name" placeholder=" " class="peer w-full bg-transparent border-b border-white/10 py-4 text-base font-light text-white focus:outline-none focus:border-[#e8923e]/60 transition-colors placeholder-transparent min-h-[44px]" />
+                  <label for="name" class="absolute left-0 top-4 text-white/20 text-[11px] uppercase tracking-[0.3em] font-bold transition-all peer-focus:-top-3 peer-focus:text-[#e8923e]/60 peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-[#e8923e]/60">Votre nom</label>
+                </div>
+
+                <div class="relative">
+                  <input type="email" id="email" placeholder=" " class="peer w-full bg-transparent border-b border-white/10 py-4 text-base font-light text-white focus:outline-none focus:border-[#e8923e]/60 transition-colors placeholder-transparent min-h-[44px]" />
+                  <label for="email" class="absolute left-0 top-4 text-white/20 text-[11px] uppercase tracking-[0.3em] font-bold transition-all peer-focus:-top-3 peer-focus:text-[#e8923e]/60 peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-[#e8923e]/60">Votre email</label>
+                </div>
+
+                <div class="relative">
+                  <textarea id="message" rows="3" placeholder=" " class="peer w-full bg-transparent border-b border-white/10 py-4 text-base font-light text-white focus:outline-none focus:border-[#e8923e]/60 transition-colors placeholder-transparent resize-none"></textarea>
+                  <label for="message" class="absolute left-0 top-4 text-white/20 text-[11px] uppercase tracking-[0.3em] font-bold transition-all peer-focus:-top-3 peer-focus:text-[#e8923e]/60 peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-[#e8923e]/60">Votre projet</label>
+                </div>
+
+                <div class="pt-6">
+                  <button class="group relative inline-flex items-center gap-4 px-10 py-5 bg-[#e8923e] text-black text-xs font-bold uppercase tracking-[0.2em] overflow-hidden transition-all duration-500 hover:gap-6 min-h-[44px]">
+                    <span>Envoyer le message</span>
+                    <span class="transition-transform duration-500 group-hover:translate-x-1">&rarr;</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="text-center mt-8 text-sm">
-        <p>ASBL Productions Associées — TVA : BE 0896.755.397</p>
+    </section>
+
+    <footer class="py-3 bg-white/95 text-black/60 font-medium uppercase tracking-[0.15em] text-[11px] overflow-hidden border-t border-black/5">
+      <div class="marquee-content whitespace-nowrap">
+        <span>WONDER L'HANG&ensp;&middot;&ensp;BRUXELLES&ensp;&middot;&ensp;2025&ensp;&middot;&ensp;MUSIQUE VIVANTE&ensp;&middot;&ensp;WONDER L'HANG&ensp;&middot;&ensp;BRUXELLES&ensp;&middot;&ensp;2025&ensp;&middot;&ensp;MUSIQUE VIVANTE&ensp;&middot;&ensp;</span>
+        <span>WONDER L'HANG&ensp;&middot;&ensp;BRUXELLES&ensp;&middot;&ensp;2025&ensp;&middot;&ensp;MUSIQUE VIVANTE&ensp;&middot;&ensp;WONDER L'HANG&ensp;&middot;&ensp;BRUXELLES&ensp;&middot;&ensp;2025&ensp;&middot;&ensp;MUSIQUE VIVANTE&ensp;&middot;&ensp;</span>
+      </div>
+      <div class="text-center mt-6 text-[11px] text-black/50 tracking-[0.15em]">
+        ASBL Productions Associees &mdash; TVA : BE 0896.755.397
       </div>
     </footer>
+
+    <div id="custom-cursor" class="fixed top-0 left-0 w-6 h-6 border border-[#e8923e]/60 rounded-full pointer-events-none z-50 mix-blend-difference hidden md:block -translate-x-1/2 -translate-y-1/2 transition-[width,height,background-color,opacity,border-color] duration-200 ease-out"></div>
+
     <script is:inline>
+      const cursor = document.getElementById("custom-cursor");
+      let cursorX = 0, cursorY = 0, currentX = 0, currentY = 0;
+      document.addEventListener("mousemove", (e) => {
+        cursorX = e.clientX;
+        cursorY = e.clientY;
+      });
+      function animateCursor() {
+        currentX += (cursorX - currentX) * 0.15;
+        currentY += (cursorY - currentY) * 0.15;
+        cursor.style.transform = `translate(${currentX}px, ${currentY}px)`;
+        requestAnimationFrame(animateCursor);
+      }
+      animateCursor();
+
+      document.querySelectorAll("a, button").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          cursor.style.width = "48px";
+          cursor.style.height = "48px";
+          cursor.style.borderColor = "var(--copper)";
+          cursor.style.backgroundColor = "rgba(232, 146, 62, 0.08)";
+        });
+        el.addEventListener("mouseleave", () => {
+          cursor.style.width = "24px";
+          cursor.style.height = "24px";
+          cursor.style.borderColor = "rgba(232, 146, 62, 0.6)";
+          cursor.style.backgroundColor = "transparent";
+        });
+      });
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add("opacity-100");
-              entry.target.classList.remove("translate-y-10", "opacity-0");
+              entry.target.classList.add("visible");
             }
           });
         },
-        { threshold: 0.1 },
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
       );
-      document.querySelectorAll("section > div").forEach((s) => {
-        s.classList.add("transition-all", "duration-1000", "translate-y-10", "opacity-0");
-        observer.observe(s);
-      });
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
     </script>
   </body>
 </html>
