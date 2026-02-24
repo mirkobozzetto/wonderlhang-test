@@ -1,0 +1,1128 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wonderl'hang | Handpan & Expériences Sonores à Bruxelles</title>
+    <meta
+      name="description"
+      content="Concerts de handpan, ateliers, voyages sonores et expériences immersives par Jessie Cherry à Bruxelles"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/@tailwindcss/browser@4" is:inline></script>
+    <style is:inline>
+      :root {
+        --cream: #f8f1e8;
+        --brown: #2a1810;
+        --terracotta: #b85c38;
+        --copper: #d4883e;
+        --gold: #c5a059;
+      }
+      body {
+        background-color: var(--cream);
+        color: var(--brown);
+        font-family: "Montserrat", sans-serif;
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      .serif {
+        font-family: "Playfair Display", serif;
+      }
+      ::selection {
+        background-color: var(--terracotta);
+        color: white;
+      }
+      .grain {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+      #cursor {
+        width: 20px;
+        height: 20px;
+        border: 1px solid var(--brown);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 10000;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.3s ease,
+          height 0.3s ease,
+          background-color 0.3s ease,
+          border-color 0.3s ease;
+      }
+      #cursor.hover {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(184, 92, 56, 0.06);
+        border-color: var(--terracotta);
+      }
+      @media (max-width: 768px) {
+        #cursor {
+          display: none;
+        }
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      nav.nav-hidden {
+        transform: translateY(-100%);
+      }
+      .hero-title {
+        font-size: clamp(3rem, 11vw, 9rem);
+        line-height: 0.85;
+        letter-spacing: -0.02em;
+      }
+      .btn-refined {
+        position: relative;
+        padding: 0.875rem 2rem;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.6875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        border: 1px solid var(--brown);
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        overflow: hidden;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-refined::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--brown);
+        transform: translateY(100%);
+        transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .btn-refined:hover::before {
+        transform: translateY(0);
+      }
+      .btn-refined span {
+        position: relative;
+        z-index: 1;
+      }
+      .btn-refined:hover {
+        color: var(--cream);
+        border-color: var(--brown);
+      }
+      .btn-light {
+        border-color: rgba(255, 255, 255, 0.3);
+        color: white;
+      }
+      .btn-light::before {
+        background: white;
+      }
+      .btn-light:hover {
+        color: var(--brown);
+        border-color: white;
+      }
+      .img-mask-1 {
+        clip-path: polygon(0 0, 100% 4%, 96% 100%, 4% 96%);
+      }
+      .img-mask-2 {
+        clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 96%);
+      }
+      @media (max-width: 768px) {
+        .img-mask-1,
+        .img-mask-2 {
+          clip-path: none;
+        }
+      }
+      .journey-bg {
+        background-image: url("https://www.wonderlhang.be/wp-content/uploads/2022/04/DSC8002-1024x576.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+      @media (max-width: 1024px) {
+        .journey-bg {
+          background-attachment: scroll;
+        }
+      }
+      @keyframes slideDown {
+        0% {
+          transform: translateY(-100%);
+        }
+        50% {
+          transform: translateY(100%);
+        }
+        100% {
+          transform: translateY(100%);
+        }
+      }
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--cream);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--terracotta);
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <div class="grain"></div>
+    <div id="cursor"></div>
+
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 w-full z-[100] transition-transform duration-500 bg-[#f8f1e8]/90 backdrop-blur-sm border-b border-[#2a1810]/5"
+    >
+      <div class="max-w-7xl mx-auto px-6 md:px-12 py-5 flex justify-between items-center">
+        <a href="#" class="serif text-xl font-bold tracking-tight min-h-[44px] flex items-center"
+          >Wonderl'hang</a
+        >
+
+        <div
+          class="hidden md:flex space-x-10 items-center text-[10px] uppercase tracking-[0.2em] font-medium"
+        >
+          <a
+            href="#about"
+            class="hover:text-[#b85c38] transition-colors min-h-[44px] flex items-center">Artiste</a
+          >
+          <a
+            href="#concert"
+            class="hover:text-[#b85c38] transition-colors min-h-[44px] flex items-center">Concert</a
+          >
+          <a
+            href="#ateliers"
+            class="hover:text-[#b85c38] transition-colors min-h-[44px] flex items-center"
+            >Ateliers</a
+          >
+          <a
+            href="#journey"
+            class="hover:text-[#b85c38] transition-colors min-h-[44px] flex items-center"
+            >Voyage Sonore</a
+          >
+          <a href="#contact" class="btn-refined"><span>Réserver</span></a>
+        </div>
+
+        <button
+          id="menuToggle"
+          class="md:hidden p-2 text-[#2a1810] min-h-[44px] min-w-[44px] flex items-center justify-center"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"
+            ></line></svg
+          >
+        </button>
+      </div>
+    </nav>
+
+    <div
+      id="mobileMenu"
+      class="fixed inset-0 z-[101] bg-[#f8f1e8] flex flex-col justify-center items-center gap-8 translate-x-full transition-transform duration-500 md:hidden"
+    >
+      <button
+        id="closeMenu"
+        class="absolute top-6 right-6 text-[#2a1810] min-h-[44px] min-w-[44px] flex items-center justify-center"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-7 w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      <a href="#about" class="mobile-link serif text-2xl hover:text-[#b85c38] transition-colors"
+        >L'Artiste</a
+      >
+      <a href="#concert" class="mobile-link serif text-2xl hover:text-[#b85c38] transition-colors"
+        >Le Concert</a
+      >
+      <a href="#ateliers" class="mobile-link serif text-2xl hover:text-[#b85c38] transition-colors"
+        >Les Ateliers</a
+      >
+      <a href="#journey" class="mobile-link serif text-2xl hover:text-[#b85c38] transition-colors"
+        >Voyage Sonore</a
+      >
+      <a href="#contact" class="mobile-link mt-4 btn-refined border-[#b85c38] text-[#b85c38]"
+        ><span>Réserver</span></a
+      >
+    </div>
+
+    <main>
+      <section class="relative h-[100svh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+          <div class="absolute inset-0 bg-[#2a1810]/35 z-10"></div>
+          <img
+            src="https://www.wonderlhang.be/wp-content/uploads/2022/04/cropped-DSC_2731-Modifier-scaled-1.jpg"
+            alt="Wonderl'hang performance live"
+            class="w-full h-full object-cover object-[25%_75%] md:object-center"
+          />
+        </div>
+
+        <div class="relative z-20 text-center px-6">
+          <p
+            class="text-sm md:text-base uppercase tracking-[0.4em] text-white/70 font-medium mb-8 reveal"
+          >
+            Handpan & Expériences Sonores
+          </p>
+          <h1 class="hero-title serif text-white reveal" style="transition-delay: 200ms;">
+            WONDERL'HANG
+          </h1>
+          <div class="mt-12 flex flex-col items-center">
+            <span class="w-px h-20 bg-white/30 mb-6 reveal" style="transition-delay: 400ms;"></span>
+            <p
+              class="serif italic text-white/85 text-base md:text-xl max-w-md mx-auto reveal"
+              style="transition-delay: 600ms;"
+            >
+              Concerts, ateliers et voyages sonores<br />au c&oelig;ur de Bruxelles
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="absolute bottom-10 left-8 hidden lg:block text-[9px] text-white/40 tracking-[0.3em] uppercase"
+          style="writing-mode: vertical-rl;"
+        >
+          Est. 2015 &mdash; Bruxelles
+        </div>
+
+        <div class="absolute bottom-10 right-8 hidden lg:flex flex-col items-center gap-3">
+          <a
+            href="#about"
+            class="flex flex-col items-center gap-3 text-white/80 hover:text-white transition-colors"
+          >
+            <span class="text-[10px] uppercase tracking-[0.4em] font-medium">Scroll</span>
+            <span class="w-px h-16 bg-white/40 relative overflow-hidden">
+              <span
+                class="absolute inset-0 w-full bg-white animate-[slideDown_2s_ease-in-out_infinite]"
+              ></span>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <section id="about" class="py-24 md:py-48 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20 items-center">
+          <div class="md:col-span-5 reveal group">
+            <div class="relative p-4 md:p-6 lg:p-8">
+              <div
+                class="absolute inset-0 border border-[#c5a059]/20 translate-x-4 translate-y-4 md:translate-x-6 md:translate-y-6 pointer-events-none transition-transform duration-1000 group-hover:translate-x-3 group-hover:translate-y-3"
+              >
+              </div>
+
+              <div class="absolute top-0 left-0 w-20 h-20 md:w-24 md:h-24 pointer-events-none z-20">
+                <svg viewBox="0 0 100 100" fill="none" class="w-full h-full">
+                  <path d="M0 100 V0 H100" stroke="#d4883e" stroke-opacity="0.4" stroke-width="0.5"
+                  ></path>
+                  <path
+                    d="M10 100 V10 H100"
+                    stroke="#d4883e"
+                    stroke-opacity="0.2"
+                    stroke-width="0.5"></path>
+                  <circle cx="5" cy="5" r="1.5" fill="#c5a059" fill-opacity="0.6"></circle>
+                </svg>
+              </div>
+              <div
+                class="absolute bottom-0 right-0 w-20 h-20 md:w-24 md:h-24 pointer-events-none z-20 rotate-180"
+              >
+                <svg viewBox="0 0 100 100" fill="none" class="w-full h-full">
+                  <path d="M0 100 V0 H100" stroke="#d4883e" stroke-opacity="0.4" stroke-width="0.5"
+                  ></path>
+                  <path
+                    d="M10 100 V10 H100"
+                    stroke="#d4883e"
+                    stroke-opacity="0.2"
+                    stroke-width="0.5"></path>
+                  <circle cx="5" cy="5" r="1.5" fill="#c5a059" fill-opacity="0.6"></circle>
+                </svg>
+              </div>
+
+              <div
+                class="absolute -top-4 right-12 w-10 h-10 opacity-25 pointer-events-none z-20 hidden md:block"
+              >
+                <svg viewBox="0 0 40 40" fill="none" class="w-full h-full">
+                  <circle
+                    cx="20"
+                    cy="20"
+                    r="18"
+                    stroke="#2a1810"
+                    stroke-dasharray="2 4"
+                    stroke-width="0.5"></circle>
+                  <path d="M20 10 V30 M10 20 L30 20" stroke="#2a1810" stroke-width="0.5"></path>
+                </svg>
+              </div>
+
+              <div class="relative z-10 overflow-hidden">
+                <img
+                  src="http://www.wonderlhang.be/wp-content/uploads/2021/01/135821705_10159232235994268_672114074632653608_o-1024x1019.jpg"
+                  alt="Jess Lefebvre"
+                  class="w-full img-mask-1 shadow-[20px_20px_60px_-15px_rgba(42,24,16,0.2)] object-cover object-[60%_top] md:object-center transition-transform duration-[2s] ease-out group-hover:scale-[1.03]"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-tr from-[#2a1810]/10 to-transparent pointer-events-none"
+                >
+                </div>
+              </div>
+
+              <div
+                class="absolute -bottom-10 -right-10 w-64 h-64 bg-[#b85c38]/10 -z-10 rounded-full blur-[80px]"
+              >
+              </div>
+              <div
+                class="absolute -top-10 -left-10 w-48 h-48 bg-[#c5a059]/5 -z-10 rounded-full blur-[60px]"
+              >
+              </div>
+
+              <div
+                class="absolute bottom-12 -left-4 w-12 h-24 opacity-5 pointer-events-none z-0 hidden md:block"
+                style="background-image: radial-gradient(#2a1810 1px, transparent 0); background-size: 8px 8px;"
+              >
+              </div>
+            </div>
+          </div>
+
+          <div class="md:col-span-6 md:col-start-7 space-y-8">
+            <div class="reveal">
+              <span class="text-[10px] uppercase tracking-[0.4em] text-[#b85c38] font-semibold"
+                >Le Portrait</span
+              >
+              <h2 class="text-3xl md:text-5xl lg:text-6xl mt-4 leading-tight">
+                Derrière Wonderl'hang,<br />il y a <span class="italic text-[#d4883e]">Jess</span>
+              </h2>
+            </div>
+
+            <div
+              class="space-y-6 text-[#2a1810]/75 leading-relaxed font-light reveal"
+              style="transition-delay: 200ms;"
+            >
+              <p class="text-lg md:text-xl serif italic text-[#2a1810]">
+                Psychologue de formation,<br />musicienne par accident
+              </p>
+              <p>
+                En 2015, Jess Lefebvre croise le chemin de Gérard Spencer et de son handpan. Coup de
+                foudre double &mdash; pour l'homme et pour l'instrument. Elle ne lâchera ni l'un ni
+                l'autre.
+              </p>
+              <p>
+                Autodidacte, elle apprend en jouant, en écoutant, en osant l'émotion pure. Des
+                scènes d'Esperanzah au prestigieux Concert Noble de Bruxelles, elle insuffle sa
+                sensibilité dans chaque vibration.
+              </p>
+              <div
+                class="pt-8 border-t border-[#2a1810]/10 serif italic text-xl md:text-2xl text-[#d4883e]"
+              >
+                &ldquo;La vibration n'est pas seulement entendue,<br />elle est ressentie&rdquo;
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="concert" class="bg-[#2a1810] py-32 md:py-48 relative overflow-hidden">
+        <div
+          class="absolute top-0 right-0 w-1/3 h-full opacity-15 pointer-events-none hidden lg:block"
+        >
+          <img
+            src="https://www.wonderlhang.be/wp-content/uploads/2017/06/18527345_10155343907539268_4680125327708322652_o.jpg"
+            alt=""
+            class="w-full h-full object-cover grayscale"
+          />
+        </div>
+
+        <div
+          class="absolute top-0 right-[30%] w-px h-full bg-white/[0.03] pointer-events-none hidden lg:block"
+        >
+        </div>
+
+        <div
+          class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center"
+        >
+          <div class="reveal">
+            <span
+              class="text-[10px] uppercase tracking-[0.4em] text-[#d4883e]/70 font-medium mb-6 block"
+              >Expérience Immersive</span
+            >
+            <h2 class="text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-10">
+              Un Concert<br /><span class="italic text-[#d4883e]">Unique</span>
+            </h2>
+            <div class="space-y-6 text-white/60 font-light leading-relaxed max-w-lg">
+              <p>
+                Des sons cristallins qui s'entrelacent dans une atmosphère intime et envoûtante.
+                Chaque performance est un dialogue entre le métal vibrant et l'âme de l'auditeur
+              </p>
+              <p>
+                Handpan et nappes électro chillout fusionnent pour créer une bulle hors du temps, où
+                chaque note refuse de disparaître
+              </p>
+              <div class="pt-10">
+                <a href="#contact" class="btn-refined btn-light"><span>Demander un devis</span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal" style="transition-delay: 300ms;">
+            <div class="aspect-[4/5] relative overflow-hidden img-mask-2">
+              <img
+                src="https://www.wonderlhang.be/wp-content/uploads/2017/06/18527345_10155343907539268_4680125327708322652_o.jpg"
+                alt="Concert Wonderl'hang"
+                class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-[1.5s]"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#2a1810]/40 via-transparent to-transparent"
+              >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ateliers" class="py-32 md:py-48 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20 md:mb-28">
+            <div class="reveal">
+              <span class="text-[10px] uppercase tracking-[0.4em] text-[#b85c38] font-semibold"
+                >Partage & Apprentissage</span
+              >
+              <h2 class="text-4xl md:text-6xl lg:text-7xl mt-4 leading-tight">
+                Ateliers &<br /><span class="italic">Expériences</span>
+              </h2>
+            </div>
+            <p
+              class="serif italic text-lg text-[#2a1810]/60 max-w-sm reveal"
+              style="transition-delay: 200ms;"
+            >
+              Aucune connaissance musicale requise.<br />Juste de la curiosité
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#2a1810]/[0.06] border border-[#2a1810]/[0.06] reveal"
+          >
+            <a
+              href="#contact"
+              class="bg-[#fdfaf6] p-10 lg:p-12 hover:bg-white transition-colors duration-500 group flex flex-col justify-between min-h-[280px]"
+            >
+              <div>
+                <p class="text-[10px] uppercase tracking-[0.3em] text-[#b85c38] mb-4 font-medium">
+                  Individuel
+                </p>
+                <h3 class="text-2xl mb-4">Atelier Solo</h3>
+                <p class="text-sm text-[#2a1810]/60 leading-relaxed font-light">
+                  Une heure d'immersion personnalisée dans notre atelier à Uccle
+                </p>
+              </div>
+              <div class="flex items-end justify-between mt-8">
+                <span class="serif text-3xl"
+                  >40&euro; <span class="text-sm italic text-[#2a1810]/55">1 heure</span></span
+                >
+                <span
+                  class="w-9 h-9 border border-[#2a1810]/10 rounded-full flex items-center justify-center group-hover:bg-[#2a1810] group-hover:text-[#f8f1e8] transition-all duration-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"
+                    ></polyline></svg
+                  >
+                </span>
+              </div>
+            </a>
+
+            <a
+              href="#contact"
+              class="bg-[#fdfaf6] p-10 lg:p-12 hover:bg-white transition-colors duration-500 group flex flex-col justify-between min-h-[280px]"
+            >
+              <div>
+                <p class="text-[10px] uppercase tracking-[0.3em] text-[#b85c38] mb-4 font-medium">
+                  Duo
+                </p>
+                <h3 class="text-2xl mb-4">Atelier Duo</h3>
+                <p class="text-sm text-[#2a1810]/60 leading-relaxed font-light">
+                  Partagez la vibration à deux pour une complicité unique
+                </p>
+              </div>
+              <div class="flex items-end justify-between mt-8">
+                <span class="serif text-3xl"
+                  >50&euro; <span class="text-sm italic text-[#2a1810]/55">1 heure</span></span
+                >
+                <span
+                  class="w-9 h-9 border border-[#2a1810]/10 rounded-full flex items-center justify-center group-hover:bg-[#2a1810] group-hover:text-[#f8f1e8] transition-all duration-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"
+                    ></polyline></svg
+                  >
+                </span>
+              </div>
+            </a>
+
+            <a
+              href="#contact"
+              class="bg-[#fdfaf6] p-10 lg:p-12 hover:bg-white transition-colors duration-500 group flex flex-col justify-between min-h-[280px]"
+            >
+              <div>
+                <p class="text-[10px] uppercase tracking-[0.3em] text-[#b85c38] mb-4 font-medium">
+                  Groupe
+                </p>
+                <h3 class="text-2xl mb-4">Atelier Collectif</h3>
+                <p class="text-sm text-[#2a1810]/60 leading-relaxed font-light">
+                  Atelier collectif immersif, limité à 8 participants
+                </p>
+              </div>
+              <div class="flex items-end justify-between mt-8">
+                <span class="serif text-3xl"
+                  >50&euro; <span class="text-sm italic text-[#2a1810]/55">par personne</span></span
+                >
+                <span
+                  class="w-9 h-9 border border-[#2a1810]/10 rounded-full flex items-center justify-center group-hover:bg-[#2a1810] group-hover:text-[#f8f1e8] transition-all duration-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"
+                    ></polyline></svg
+                  >
+                </span>
+              </div>
+            </a>
+
+            <a
+              href="#contact"
+              class="bg-[#fdfaf6] p-10 lg:p-12 hover:bg-white transition-colors duration-500 group flex flex-col justify-between min-h-[280px]"
+            >
+              <div>
+                <p class="text-[10px] uppercase tracking-[0.3em] text-[#b85c38] mb-4 font-medium">
+                  Privé
+                </p>
+                <h3 class="text-2xl mb-4">À Domicile</h3>
+                <p class="text-sm text-[#2a1810]/60 leading-relaxed font-light">
+                  L'expérience s'invite chez vous avec une sélection d'instruments
+                </p>
+              </div>
+              <div class="flex items-end justify-between mt-8">
+                <span class="serif text-3xl">300&euro;</span>
+                <span
+                  class="w-9 h-9 border border-[#2a1810]/10 rounded-full flex items-center justify-center group-hover:bg-[#2a1810] group-hover:text-[#f8f1e8] transition-all duration-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"
+                    ></polyline></svg
+                  >
+                </span>
+              </div>
+            </a>
+
+            <a
+              href="#contact"
+              class="bg-[#fdfaf6] p-10 lg:p-12 hover:bg-white transition-colors duration-500 group flex flex-col justify-between min-h-[280px]"
+            >
+              <div>
+                <p class="text-[10px] uppercase tracking-[0.3em] text-[#b85c38] mb-4 font-medium">
+                  Entreprise
+                </p>
+                <h3 class="text-2xl mb-4">Teambuilding</h3>
+                <p class="text-sm text-[#2a1810]/60 leading-relaxed font-light">
+                  Cohésion d'équipe par l'écoute et la vibration sonore
+                </p>
+              </div>
+              <div class="flex items-end justify-between mt-8">
+                <span class="serif text-3xl">500&euro;</span>
+                <span
+                  class="w-9 h-9 border border-[#2a1810]/10 rounded-full flex items-center justify-center group-hover:bg-[#2a1810] group-hover:text-[#f8f1e8] transition-all duration-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"
+                    ></polyline></svg
+                  >
+                </span>
+              </div>
+            </a>
+
+            <a
+              href="#contact"
+              class="bg-[#fdfaf6] p-10 lg:p-12 hover:bg-white transition-colors duration-500 group flex flex-col justify-between min-h-[280px]"
+            >
+              <div>
+                <p class="text-[10px] uppercase tracking-[0.3em] text-[#b85c38] mb-4 font-medium">
+                  Location
+                </p>
+                <h3 class="text-2xl mb-4">Location Handpan</h3>
+                <p class="text-sm text-[#2a1810]/60 leading-relaxed font-light">
+                  Poursuivez l'apprentissage à votre rythme chez vous
+                </p>
+              </div>
+              <div class="flex items-end justify-between mt-8">
+                <span class="serif text-3xl"
+                  >40&euro; <span class="text-sm italic text-[#2a1810]/55">par semaine</span></span
+                >
+                <span
+                  class="w-9 h-9 border border-[#2a1810]/10 rounded-full flex items-center justify-center group-hover:bg-[#2a1810] group-hover:text-[#f8f1e8] transition-all duration-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"
+                    ></polyline></svg
+                  >
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="journey"
+        class="py-32 md:py-48 bg-[#2a1810] text-[#f8f1e8] px-6 md:px-12 relative overflow-hidden journey-bg"
+      >
+        <div class="absolute inset-0 z-0">
+          <div class="absolute inset-0 bg-[#2a1810]/75"></div>
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-[#2a1810] via-[#2a1810]/60 to-transparent"
+          >
+          </div>
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-[#2a1810] via-transparent to-[#2a1810]/50"
+          >
+          </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+          <div class="max-w-2xl">
+            <div class="reveal">
+              <span
+                class="text-[10px] uppercase tracking-[0.4em] text-[#d4883e]/70 font-medium mb-6 block"
+                >Voyage Sonore</span
+              >
+              <h2 class="text-4xl md:text-6xl lg:text-7xl leading-tight mb-10">
+                Fermez les yeux,<br />le reste <span class="italic text-[#d4883e]">suit</span>
+              </h2>
+            </div>
+
+            <div class="reveal" style="transition-delay: 200ms;">
+              <p class="text-white/55 font-light leading-relaxed mb-8 max-w-lg">
+                Handpans, ravdrum, bols, voix, guitare, koshi, mantras. Ce n'est pas de la
+                méditation. Ce n'est pas un spectacle. C'est un entre-deux suspendu, quelque part
+                entre la terre et l'ailleurs
+              </p>
+              <p class="text-white/55 font-light leading-relaxed mb-12 max-w-lg">
+                Un retour à soi, une déconnexion nécessaire dans un monde bruyant
+              </p>
+
+              <div class="flex flex-col sm:flex-row items-start sm:items-center gap-8">
+                <a href="#contact" class="btn-refined btn-light"><span>Réserver l'instant</span></a>
+                <div class="flex flex-col border-l border-white/10 pl-6">
+                  <span class="serif text-2xl text-white">200&euro;</span>
+                  <span class="text-white/30 text-[10px] uppercase tracking-[0.3em] mt-1"
+                    >+ frais de déplacement</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-32 md:py-48 px-6 md:px-12 border-b border-[#2a1810]/5">
+        <div class="max-w-7xl mx-auto">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20 md:mb-28">
+            <div class="reveal">
+              <span class="text-[10px] uppercase tracking-[0.4em] text-[#b85c38] font-semibold"
+                >Témoignages</span
+              >
+              <h2 class="text-4xl md:text-6xl mt-4 leading-tight">
+                Échos &<br /><span class="italic">Ressentis</span>
+              </h2>
+            </div>
+            <div class="hidden md:block w-24 h-px bg-[#2a1810]/10 reveal"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+            <div class="space-y-6 reveal">
+              <span class="serif text-6xl text-[#d4883e]/20 leading-none select-none">&ldquo;</span>
+              <p class="serif italic text-lg leading-relaxed text-[#2a1810]/75 -mt-4">
+                On avait réservé Jess pour notre mariage. Trois mois après, nos invités nous en
+                parlent encore.
+              </p>
+              <div class="pt-4">
+                <div class="w-6 h-px bg-[#d4883e]/30 mb-4"></div>
+                <p class="text-[10px] uppercase tracking-[0.3em] font-semibold">Émilie & Thomas</p>
+                <p class="text-[10px] text-[#2a1810]/40 uppercase tracking-[0.3em] mt-1">
+                  Cérémonie Laïque
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-6 reveal" style="transition-delay: 200ms;">
+              <span class="serif text-6xl text-[#d4883e]/20 leading-none select-none">&ldquo;</span>
+              <p class="serif italic text-lg leading-relaxed text-[#2a1810]/75 -mt-4">
+                J'ai offert l'atelier à mon fils de 14 ans qui ne voulait pas y aller. Il est
+                ressorti en demandant quand est-ce qu'on y retourne.
+              </p>
+              <div class="pt-4">
+                <div class="w-6 h-px bg-[#d4883e]/30 mb-4"></div>
+                <p class="text-[10px] uppercase tracking-[0.3em] font-semibold">Nathalie V.</p>
+                <p class="text-[10px] text-[#2a1810]/40 uppercase tracking-[0.3em] mt-1">
+                  Atelier Découverte
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-6 reveal" style="transition-delay: 400ms;">
+              <span class="serif text-6xl text-[#d4883e]/20 leading-none select-none">&ldquo;</span>
+              <p class="serif italic text-lg leading-relaxed text-[#2a1810]/75 -mt-4">
+                Le voyage sonore en équipe : huit collègues, une heure de silence total après. Du
+                jamais vu.
+              </p>
+              <div class="pt-4">
+                <div class="w-6 h-px bg-[#d4883e]/30 mb-4"></div>
+                <p class="text-[10px] uppercase tracking-[0.3em] font-semibold">Marc D.</p>
+                <p class="text-[10px] text-[#2a1810]/40 uppercase tracking-[0.3em] mt-1">
+                  Team Building
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="py-32 md:py-48 px-6 md:px-12 bg-[#f8f1e8]">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
+          <div class="lg:col-span-5 space-y-12 reveal">
+            <div>
+              <span class="text-[10px] uppercase tracking-[0.4em] text-[#b85c38] font-semibold"
+                >Réservations</span
+              >
+              <h2 class="text-4xl md:text-6xl lg:text-7xl mt-4 serif leading-tight">
+                Contactez<br /><span class="italic text-[#d4883e]">Jess</span>
+              </h2>
+            </div>
+
+            <div class="space-y-6">
+              <a
+                href="mailto:wonderlhang@gmail.com"
+                class="flex items-center gap-4 group min-h-[44px] hover:text-[#b85c38] transition-colors"
+              >
+                <svg
+                  class="w-4 h-4 text-[#d4883e] shrink-0"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  ><path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  ></path><polyline points="22,6 12,13 2,6"></polyline></svg
+                >
+                <span class="text-sm tracking-wide">wonderlhang@gmail.com</span>
+              </a>
+              <a
+                href="tel:+32497752718"
+                class="flex items-center gap-4 group min-h-[44px] hover:text-[#b85c38] transition-colors"
+              >
+                <svg
+                  class="w-4 h-4 text-[#d4883e] shrink-0"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  ><path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path></svg
+                >
+                <span class="text-sm tracking-wide">+32 497 75 27 18</span>
+              </a>
+            </div>
+
+            <div>
+              <p class="text-[10px] uppercase tracking-[0.4em] text-[#2a1810]/40 font-medium mb-4">
+                Réseaux
+              </p>
+              <div class="flex flex-col">
+                <a
+                  href="https://www.instagram.com/jessiecherry7/"
+                  class="flex items-center justify-between text-sm tracking-wide border-b border-[#2a1810]/[0.06] py-4 hover:text-[#b85c38] transition-colors min-h-[44px] group"
+                >
+                  <span class="flex items-center gap-3">
+                    <svg
+                      class="w-4 h-4 text-[#d4883e] group-hover:text-[#b85c38] transition-colors"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      ><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path
+                        d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line
+                        x1="17.5"
+                        y1="6.5"
+                        x2="17.51"
+                        y2="6.5"></line></svg
+                    >
+                    Instagram
+                  </span>
+                  <span
+                    class="text-[#d4883e] text-xs opacity-0 group-hover:opacity-100 transition-opacity"
+                    >&nearr;</span
+                  >
+                </a>
+                <a
+                  href="https://www.facebook.com/jess.lefebvre.94/"
+                  class="flex items-center justify-between text-sm tracking-wide border-b border-[#2a1810]/[0.06] py-4 hover:text-[#b85c38] transition-colors min-h-[44px] group"
+                >
+                  <span class="flex items-center gap-3">
+                    <svg
+                      class="w-4 h-4 text-[#d4883e] group-hover:text-[#b85c38] transition-colors"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      ><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                      ></path></svg
+                    >
+                    Facebook
+                  </span>
+                  <span
+                    class="text-[#d4883e] text-xs opacity-0 group-hover:opacity-100 transition-opacity"
+                    >&nearr;</span
+                  >
+                </a>
+                <a
+                  href="https://www.youtube.com/channel/UCnsBBJyX8otqGZ8muK75kpg"
+                  class="flex items-center justify-between text-sm tracking-wide border-b border-[#2a1810]/[0.06] py-4 hover:text-[#b85c38] transition-colors min-h-[44px] group"
+                >
+                  <span class="flex items-center gap-3">
+                    <svg
+                      class="w-4 h-4 text-[#d4883e] group-hover:text-[#b85c38] transition-colors"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      ><path
+                        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.35 29 29 0 0 0-.46-5.33z"
+                      ></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
+                      ></polygon></svg
+                    >
+                    YouTube
+                  </span>
+                  <span
+                    class="text-[#d4883e] text-xs opacity-0 group-hover:opacity-100 transition-opacity"
+                    >&nearr;</span
+                  >
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="lg:col-span-7 bg-white p-8 md:p-12 shadow-sm reveal"
+            style="transition-delay: 200ms;"
+          >
+            <h3 class="text-2xl md:text-3xl mb-10 serif">Demande de réservation</h3>
+            <form class="space-y-8" id="contact-form">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-[10px] uppercase tracking-[0.3em] font-semibold mb-3 text-[#2a1810]/60"
+                    >Nom</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="Votre nom"
+                    class="w-full bg-transparent border-b border-[#2a1810]/10 py-3 focus:outline-none focus:border-[#d4883e] transition-colors text-sm min-h-[44px]"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="email"
+                    class="block text-[10px] uppercase tracking-[0.3em] font-semibold mb-3 text-[#2a1810]/60"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="votre@email.com"
+                    class="w-full bg-transparent border-b border-[#2a1810]/10 py-3 focus:outline-none focus:border-[#d4883e] transition-colors text-sm min-h-[44px]"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="message"
+                  class="block text-[10px] uppercase tracking-[0.3em] font-semibold mb-3 text-[#2a1810]/60"
+                  >Votre projet</label
+                >
+                <textarea
+                  id="message"
+                  rows="4"
+                  placeholder="Parlez-nous de votre projet..."
+                  class="w-full bg-transparent border-b border-[#2a1810]/10 py-3 focus:outline-none focus:border-[#d4883e] transition-colors text-sm resize-none"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-refined">
+                <span>Envoyer la demande</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-10 px-6 md:px-12 border-t border-[#2a1810]/5 text-[#2a1810]/35">
+      <div
+        class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em]"
+      >
+        <span class="serif text-sm font-bold text-[#2a1810]/50 normal-case tracking-normal"
+          >Wonderl'hang</span
+        >
+        <span class="text-center">
+          ASBL Productions Associées &mdash; TVA : BE 0896.755.397 &mdash; Uccle, Bruxelles
+        </span>
+      </div>
+    </footer>
+
+    <script is:inline>
+      document.getElementById("contact-form").addEventListener("submit", (e) => e.preventDefault());
+
+      const cursor = document.getElementById("cursor");
+      let cursorX = 0,
+        cursorY = 0,
+        currentX = 0,
+        currentY = 0;
+      document.addEventListener("mousemove", (e) => {
+        cursorX = e.clientX;
+        cursorY = e.clientY;
+      });
+      function animateCursor() {
+        currentX += (cursorX - currentX) * 0.12;
+        currentY += (cursorY - currentY) * 0.12;
+        cursor.style.left = currentX + "px";
+        cursor.style.top = currentY + "px";
+        requestAnimationFrame(animateCursor);
+      }
+      animateCursor();
+
+      document.querySelectorAll("a, button, input, textarea, select").forEach((el) => {
+        el.addEventListener("mouseenter", () => cursor.classList.add("hover"));
+        el.addEventListener("mouseleave", () => cursor.classList.remove("hover"));
+      });
+
+      let lastScroll = 0;
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll <= 0) {
+          navbar.classList.remove("nav-hidden");
+          return;
+        }
+        if (currentScroll > lastScroll) navbar.classList.add("nav-hidden");
+        else navbar.classList.remove("nav-hidden");
+        lastScroll = currentScroll;
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("active");
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const closeMenu = document.getElementById("closeMenu");
+
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.remove("translate-x-full");
+        mobileMenu.classList.add("translate-x-0");
+        document.body.style.overflow = "hidden";
+      });
+
+      function closeMobileMenu() {
+        mobileMenu.classList.add("translate-x-full");
+        mobileMenu.classList.remove("translate-x-0");
+        document.body.style.overflow = "";
+      }
+
+      closeMenu.addEventListener("click", closeMobileMenu);
+      document.querySelectorAll(".mobile-link").forEach((link) => {
+        link.addEventListener("click", closeMobileMenu);
+      });
+    </script>
+  </body>
+</html>
